@@ -3,31 +3,65 @@
   "name": "ClassiCube Script",
   "patterns": [
     {
-      "include": "#keywords"
+      "include": "#label"
     },
     {
-      "include": "#strings"
+      "include": "#keyword-control"
+    },
+    {
+      "include": "#numeric-variable-name"
+    },
+    {
+      "include": "#string-variable-name"
+    },
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#numeric-literal"
+    },
+    {
+      "include": "#operator"
+    },
+    {
+      "include": "#command"
     }
   ],
   "repository": {
-    "keywords": {
-      "patterns": [
-        {
-          "name": "keyword.control.classicube-script",
-          "match": "\\b(if|while|for|return)\\b"
-        }
-      ]
+    "label": {
+      "name": "entity.name.function.classicube-script",
+      "match": "#(.*)\\b"
     },
-    "strings": {
+    "keyword-control": {
+      "name": "keyword.control.classicube-script",
+      "match": "\\b(goto|call|quit)\\b"
+    },
+    "numeric-variable-name": {
       "name": "string.quoted.double.classicube-script",
-      "begin": "\"",
-      "end": "\"",
-      "patterns": [
-        {
-          "name": "constant.character.escape.classicube-script",
-          "match": "\\\\."
-        }
-      ]
+      "begin": "ⁿ",
+      "end": "ⁿ"
+    },
+    "string-variable-name": {
+      "name": "string.quoted.double.classicube-script",
+      "begin": "²",
+      "end": "²"
+    },
+    "comment": {
+      "name": "comment.line.classicube-script",
+      "begin": "^\\s*//",
+      "end": "(?=^)"
+    },
+    "numeric-literal": {
+      "name": "constant.numeric.classicube-script",
+      "match": "\\b[0-9]+\\b"
+    },
+    "operator": {
+      "name": "keyword.operator.new.classicube-script",
+      "match": "\\b(set|add|sub|mul|div|mod|rand|randlist|show|get|true|false)\\b"
+    },
+    "command": {
+      "name": "keyword.operator.new.classicube-script",
+      "match": "\\b(msg|cpemsg|kill|cmd|delay|item|bool|int|string|cutscene|newthread|reply|lookat|env|motd|if)\\b"
     }
   },
   "scopeName": "source.classicube-script"

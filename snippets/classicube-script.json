@@ -1,0 +1,76 @@
+{
+  ".source.classicube-script": {
+    "msg": {
+      "prefix": "msg",
+      "body": "msg ${1:message}"
+    },
+    "cpemsg": {
+      "prefix": "cpemsg",
+      "body": "cpemsg ${1:cpe message field} ${2:message}"
+    },
+    "kill": {
+      "prefix": "kill",
+      "body": "kill ${1:message}"
+    },
+    "cmd": {
+      "prefix": "cmd",
+      "body": "cmd ${1:command} ${2:command arguments}"
+    },
+    "delay": {
+      "prefix": "delay",
+      "body": "delay ${1:milliseconds}"
+    },
+    "item": {
+      "prefix": "item",
+      "body": "item ${1:get/take} ${2:ITEM_NAME}"
+    },
+    "bool": {
+      "prefix": "bool",
+      "body": "bool ${1:boolName} ${2:true/false}"
+    },
+    "int": {
+      "prefix": "int",
+      "body": "int ${1:intName} ${2:operation} ${3:number}"
+    },
+    "string": {
+      "prefix": "string",
+      "body": "string ${1:stringName} set ${2:text}"
+    },
+    "cutscene": {
+      "prefix": "cutscene",
+      "body": "cutscene ${1:on/off}"
+    },
+    "goto": {
+      "prefix": "goto",
+      "body": "goto #${1:label}"
+    },
+    "call": {
+      "prefix": "call",
+      "body": "call #${1:label}"
+    },
+    "newthread": {
+      "prefix": "newthread",
+      "body": "newthread #${1:label}"
+    },
+    "reply": {
+      "prefix": "reply",
+      "body": "reply ${1:option number}|${2:text shown to player}|#${3:label to call if chosen}"
+    },
+    "lookat": {
+      "prefix": "lookat",
+      "body": "lookat ${1:block coords}"
+    },
+    "env": {
+      "prefix": "env",
+      "body": "env ${1:property} ${2:value}"
+    },
+    "motd": {
+      "prefix": "motd",
+      "body": "motd ${1:motd arguments}"
+    },
+    "quit": {
+      "prefix": "quit",
+      "body": "quit"
+    }
+  }
+}

@@ -29,6 +29,12 @@
         "scopeName": "source.classicube-script",
         "path": "./syntaxes/classicube-script.tmLanguage.json"
       }
+    ],
+    "snippets": [
+      {
+        "language": "classicube-script",
+        "path": "./snippets/classicube-script.json"
+      }
     ]
   }
 }
