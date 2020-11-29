@@ -1,0 +1,34 @@
+{
+  "name": "classicube-script",
+  "displayName": "ClassiCube Script",
+  "description": "ClassiCube Script language support",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.51.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "classicube-script",
+        "aliases": [
+          "ClassiCube Script",
+          "classicube-script"
+        ],
+        "extensions": [
+          ".ccs"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "classicube-script",
+        "scopeName": "source.classicube-script",
+        "path": "./syntaxes/classicube-script.tmLanguage.json"
+      }
+    ]
+  }
+}
