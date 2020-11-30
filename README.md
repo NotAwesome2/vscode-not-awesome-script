@@ -1,6 +1,6 @@
-# VSCode ClassiCube Script Language Support
+# Not Awesome 2 ClassiCube Script VSCode Language Support
 
-Provides simple syntax highlighting and snippets for writing ccs ClassiCube Script files.
+Provides simple syntax highlighting and snippets for writing ccs ClassiCube Script files that can run on the Not Awesome 2 ClassiCube server.
 
 ## References
 
