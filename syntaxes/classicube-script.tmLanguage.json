@@ -2,30 +2,19 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "ClassiCube Script",
   "patterns": [
-    {
-      "include": "#label"
-    },
-    {
-      "include": "#keyword-control"
-    },
-    {
-      "include": "#numeric-variable-name"
-    },
-    {
-      "include": "#string-variable-name"
-    },
-    {
-      "include": "#comment"
-    },
-    {
-      "include": "#numeric-literal"
-    },
-    {
-      "include": "#operator"
-    },
-    {
-      "include": "#command"
-    }
+    { "include": "#label" },
+    { "include": "#keyword-control" },
+    { "include": "#numeric-variable-name" },
+    { "include": "#string-variable-name" },
+    { "include": "#plural-variable-name" },
+    { "include": "#comment" },
+    { "include": "#numeric-literal" },
+    { "include": "#boolean-literal" },
+    { "include": "#operator" },
+    { "include": "#command-with-interpolated-string" },
+    { "include": "#command" },
+    { "include": "#builtin-variable" },
+    { "include": "#variable-in-string" }
   ],
   "repository": {
     "label": {
@@ -36,32 +25,77 @@
       "name": "keyword.control.classicube-script",
       "match": "\\b(goto|call|quit)\\b"
     },
+    "variable": {
+      "name": "variable.other.classicube-script",
+      "match": "[a-zA-Z_][a-zA-Z0-9_\\-]*"
+    },
     "numeric-variable-name": {
-      "name": "string.quoted.double.classicube-script",
+      "name": "keyword.operator.new.classicube-script",
       "begin": "ⁿ",
-      "end": "ⁿ"
+      "end": "ⁿ",
+      "patterns": [{ "include": "#variable" }]
     },
     "string-variable-name": {
-      "name": "string.quoted.double.classicube-script",
+      "name": "keyword.operator.new.classicube-script",
       "begin": "²",
-      "end": "²"
+      "end": "²",
+      "patterns": [{ "include": "#variable" }]
+    },
+    "plural-variable-name": {
+      "name": "keyword.operator.new.classicube-script",
+      "begin": "≈",
+      "end": "≈",
+      "patterns": [{ "include": "#variable" }]
     },
     "comment": {
       "name": "comment.line.classicube-script",
-      "begin": "^\\s*//",
-      "end": "(?=^)"
+      "match": "^\\s*//.*"
     },
     "numeric-literal": {
       "name": "constant.numeric.classicube-script",
       "match": "\\b[0-9]+\\b"
     },
+    "boolean-literal": {
+      "name": "constant.language.classicube-script",
+      "match": "\\b(true|false)\\b"
+    },
     "operator": {
       "name": "keyword.operator.new.classicube-script",
-      "match": "\\b(set|add|sub|mul|div|mod|rand|randlist|show|get|true|false)\\b"
+      "match": "\\b(set|add|sub|mul|div|mod|rand|randlist|show|get|take)\\b"
     },
     "command": {
       "name": "keyword.operator.new.classicube-script",
-      "match": "\\b(msg|cpemsg|kill|cmd|delay|item|bool|int|string|cutscene|newthread|reply|lookat|env|motd|if)\\b"
+      "match": "^\\s*(kill|delay|item|bool|int|string|cutscene|newthread|reply|lookat|env|motd|if)\\b"
+    },
+    "command-with-interpolated-string": {
+      "name": "keyword.operator.new.classicube-script",
+      "begin": "^\\s*(msg|cpemsg|cmd)",
+      "end": "$",
+      "patterns": [{ "include": "#interpolated-string" }]
+    },
+    "builtin-variable": {
+      "name": "support.type.builtin.classicube-script",
+      "match": "\\b(MBX|MBY|MBZ|PlayerBlockX|PlayerBlockY|PlayerBlockZ|PlayerX|PlayerY|PlayerZ|MBCoords|PlayerBlockCoords|PlayerBlockCoordsPrecise|PlayerCoords|cef)\\b"
+    },
+    "interpolated-string": {
+      "name": "string.interpolated.classicube-script",
+      "begin": " ",
+      "end": "$",
+      "patterns": [
+        { "include": "#color-code" },
+        { "include": "#variable-in-string" },
+        { "include": "#numeric-variable-name" },
+        { "include": "#string-variable-name" },
+        { "include": "#plural-variable-name" }
+      ]
+    },
+    "variable-in-string": {
+      "name": "support.type.builtin.classicube-script",
+      "match": "(@nick|@p)"
+    },
+    "color-code": {
+      "name": "constant.character.escape.classicube-script",
+      "match": "%[0-9a-zA-z]"
     }
   },
   "scopeName": "source.classicube-script"
