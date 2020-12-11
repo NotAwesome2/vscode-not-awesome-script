@@ -2,6 +2,7 @@
   "name": "classicube-script",
   "displayName": "ClassiCube Script",
   "description": "ClassiCube Script language support",
+  "license": "MIT",
   "version": "0.0.7",
   "engines": {
     "vscode": "^1.51.0"
