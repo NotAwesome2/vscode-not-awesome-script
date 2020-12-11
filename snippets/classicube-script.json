@@ -6,7 +6,7 @@
     },
     "cpemsg": {
       "prefix": "cpemsg",
-      "body": "cpemsg ${1:cpe message field} ${2:message}"
+      "body": "cpemsg ${1|top1,top2,top3,bot1,bot2,bot3,announce|} ${2:message}"
     },
     "kill": {
       "prefix": "kill",
@@ -22,11 +22,11 @@
     },
     "item": {
       "prefix": "item",
-      "body": "item ${1:get/take} ${2:ITEM_NAME}"
+      "body": "item ${1|get,take|} ${2:ITEM_NAME}"
     },
     "bool": {
       "prefix": "bool",
-      "body": "bool ${1:boolName} ${2:true/false}"
+      "body": "bool ${1:boolName} ${2|true,false|}"
     },
     "int": {
       "prefix": "int",
@@ -38,7 +38,7 @@
     },
     "cutscene": {
       "prefix": "cutscene",
-      "body": "cutscene ${1:on/off}"
+      "body": "cutscene ${1|on,off|}"
     },
     "goto": {
       "prefix": "goto",

@@ -65,7 +65,7 @@
     },
     "command": {
       "name": "keyword.operator.new.classicube-script",
-      "match": "^\\s*(kill|delay|item|bool|int|string|cutscene|newthread|reply|lookat|env|motd|if)\\b"
+      "match": "^\\s*(kill|delay|item|bool|int|string|cutscene|newthread|reply|lookat|env|motd|if|ifnot)\\b"
     },
     "command-with-interpolated-string": {
       "name": "keyword.operator.new.classicube-script",
