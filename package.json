@@ -2,7 +2,7 @@
   "name": "classicube-script",
   "displayName": "ClassiCube Script",
   "description": "ClassiCube Script language support",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "engines": {
     "vscode": "^1.51.0"
   },
