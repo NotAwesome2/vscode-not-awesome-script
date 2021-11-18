@@ -4,13 +4,10 @@
   "patterns": [
     { "include": "#label" },
     { "include": "#keyword-control" },
-    { "include": "#numeric-variable-name" },
-    { "include": "#string-variable-name" },
-    { "include": "#plural-variable-name" },
+    { "include": "#variable-name" },
     { "include": "#comment" },
     { "include": "#numeric-literal" },
     { "include": "#boolean-literal" },
-    { "include": "#operator" },
     { "include": "#command-with-interpolated-string" },
     { "include": "#command" },
     { "include": "#builtin-variable" },
@@ -23,29 +20,20 @@
     },
     "keyword-control": {
       "name": "keyword.control.classicube-script",
-      "match": "\\b(goto|call|quit)\\b"
+      "match": "\\b(goto|call|jump|quit)\\b"
     },
     "variable": {
       "name": "variable.other.classicube-script",
       "match": "[a-zA-Z_][a-zA-Z0-9_\\-]*"
     },
-    "numeric-variable-name": {
+    "variable-name": {
       "name": "keyword.operator.new.classicube-script",
-      "begin": "ⁿ",
-      "end": "ⁿ",
-      "patterns": [{ "include": "#variable" }]
-    },
-    "string-variable-name": {
-      "name": "keyword.operator.new.classicube-script",
-      "begin": "²",
-      "end": "²",
-      "patterns": [{ "include": "#variable" }]
-    },
-    "plural-variable-name": {
-      "name": "keyword.operator.new.classicube-script",
-      "begin": "≈",
-      "end": "≈",
-      "patterns": [{ "include": "#variable" }]
+      "begin": "{",
+      "end": "}",
+      "patterns": [
+        { "include": "#builtin-variable" },
+        { "include": "#variable" }
+      ]
     },
     "comment": {
       "name": "comment.line.classicube-script",
@@ -59,23 +47,19 @@
       "name": "constant.language.classicube-script",
       "match": "\\b(true|false)\\b"
     },
-    "operator": {
-      "name": "keyword.operator.new.classicube-script",
-      "match": "\\b(set|add|sub|mul|div|mod|rand|randlist|show|get|take)\\b"
-    },
     "command": {
       "name": "keyword.operator.new.classicube-script",
-      "match": "^\\s*(kill|delay|item|bool|int|string|cutscene|newthread|reply|lookat|env|motd|if|ifnot)\\b"
+      "match": "\\b(kill|tempblock|tempchunk|delay|item|goto|call|jump|newthread|set|setadd|setsub|setmul|setdiv|setmod|setrandrange|setrandrangedecimal|setrandlist|setround|setroundup|setrounddown|setblockid|show|resetdata|freeze|unfreeze|look|stare|env|motd|setspawn|reply|replysilent|reach|quit|terminate|if|ifnot)\\b"
     },
     "command-with-interpolated-string": {
       "name": "keyword.operator.new.classicube-script",
-      "begin": "^\\s*(msg|cpemsg|cmd)",
+      "begin": "\\b(msg|cpemsg|cmd)\\b",
       "end": "$",
       "patterns": [{ "include": "#interpolated-string" }]
     },
     "builtin-variable": {
       "name": "support.type.builtin.classicube-script",
-      "match": "\\b(MBX|MBY|MBZ|PlayerBlockX|PlayerBlockY|PlayerBlockZ|PlayerX|PlayerY|PlayerZ|MBCoords|PlayerBlockCoords|PlayerBlockCoordsPrecise|PlayerCoords|cef)\\b"
+      "match": "\\b(cef|MBX|MBY|MBZ|PlayerX|PlayerY|PlayerZ|PlayerPX|PlayerPY|PlayerPZ|PlayerYaw|PlayerPitch|msgDelay|msgDelayMultiplier|MBCoords|PlayerCoords|PlayerCoordsDecimal|PlayerCoordsPrecise|runArg0|runArg1|runArg2|runArg3|runArg4|runArg5|runArg6|runArg7|runArg8|runArg9|epochMS)\\b"
     },
     "interpolated-string": {
       "name": "string.interpolated.classicube-script",
@@ -84,9 +68,7 @@
       "patterns": [
         { "include": "#color-code" },
         { "include": "#variable-in-string" },
-        { "include": "#numeric-variable-name" },
-        { "include": "#string-variable-name" },
-        { "include": "#plural-variable-name" }
+        { "include": "#variable-name" }
       ]
     },
     "variable-in-string": {
@@ -95,7 +77,7 @@
     },
     "color-code": {
       "name": "constant.character.escape.classicube-script",
-      "match": "%[0-9a-zA-z]"
+      "match": "(%|&)[0-9a-zA-z]"
     }
   },
   "scopeName": "source.classicube-script"

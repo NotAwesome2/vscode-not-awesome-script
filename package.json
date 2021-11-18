@@ -1,7 +1,7 @@
 {
   "name": "classicube-script",
   "displayName": "ClassiCube Script",
-  "description": "ClassiCube Script language support",
+  "description": "ClassiCube (Not Awesome) Script language support",
   "license": "MIT",
   "version": "0.0.7",
   "engines": {
@@ -14,12 +14,14 @@
     "url": "https://github.com/SpiralP/vscode-classicube-script.git"
   },
   "bugs": {
-    "url": "https://github.com/prettier/prettier-vscode/issues"
+    "url": "https://github.com/SpiralP/vscode-classicube-script/issues"
   },
   "keywords": [
     "classicube-script",
     "classicube",
-    "ccs"
+    "ccs",
+    "not-awesome-script",
+    "nas"
   ],
   "categories": [
     "Programming Languages"
@@ -30,10 +32,13 @@
         "id": "classicube-script",
         "aliases": [
           "ClassiCube Script",
-          "classicube-script"
+          "classicube-script",
+          "Not Awesome Script",
+          "not-awesome-script"
         ],
         "extensions": [
-          ".ccs"
+          ".ccs",
+          ".nas"
         ],
         "configuration": "./language-configuration.json"
       }

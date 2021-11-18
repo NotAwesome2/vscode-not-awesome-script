@@ -13,9 +13,7 @@
   ],
   // symbols that are auto closed when typing
   "autoClosingPairs": [
-    ["ⁿ", "ⁿ"],
-    ["²", "²"]
-    // ["{", "}"],
+    ["{", "}"]
     // ["[", "]"],
     // ["(", ")"],
     // ["\"", "\""],
@@ -23,9 +21,7 @@
   ],
   // symbols that can be used to surround a selection
   "surroundingPairs": [
-    ["ⁿ", "ⁿ"],
-    ["²", "²"]
-    // ["{", "}"],
+    ["{", "}"]
     // ["[", "]"],
     // ["(", ")"],
     // ["\"", "\""],

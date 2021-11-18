@@ -2,75 +2,208 @@
   ".source.classicube-script": {
     "msg": {
       "prefix": "msg",
-      "body": "msg ${1:message}"
+      "body": "msg ${1:message}",
+      "description": "Sends a message to the player.\nYou can use @p to substitute their full player name (includes the +) or @nick to subtitute for a more natural version of their name (e.g. Mike_30+ becomes Mike)"
     },
     "cpemsg": {
       "prefix": "cpemsg",
-      "body": "cpemsg ${1|top1,top2,top3,bot1,bot2,bot3,announce|} ${2:message}"
+      "body": "cpemsg ${1|top1,top2,top3,bot1,bot2,bot3,announce|} ${2:message}",
+      "description": "Same as msg, but allows you to send to the other special chat fields in top right, bottom right, or center."
     },
     "kill": {
       "prefix": "kill",
-      "body": "kill ${1:message}"
+      "body": "kill ${1:message}",
+      "description": "Kills the player with an optional public death message."
     },
     "cmd": {
       "prefix": "cmd",
-      "body": "cmd ${1:command} ${2:command arguments}"
+      "body": "cmd ${1:command} ${2:command arguments}",
+      "description": "Runs the given command with the given arguments."
+    },
+    "tempblock": {
+      "prefix": "tempblock",
+      "body": "tempblock ${1:args}",
+      "description": "Shortcut for \"cmd tempblock [args]\". See /help tempblock for more info."
+    },
+    "tempchunk": {
+      "prefix": "tempchunk",
+      "body": "tempchunk ${1:args}",
+      "description": "Shortcut for \"cmd tempchunk [args]\". See /help tempchunk for more info."
     },
     "delay": {
       "prefix": "delay",
-      "body": "delay ${1:milliseconds}"
+      "body": "delay ${1:number or package}",
+      "description": "Makes the script pause for the amount of milliseconds specified."
     },
     "item": {
       "prefix": "item",
-      "body": "item ${1|get,take|} ${2:ITEM_NAME}"
-    },
-    "bool": {
-      "prefix": "bool",
-      "body": "bool ${1:boolName} ${2|true,false|}"
-    },
-    "int": {
-      "prefix": "int",
-      "body": "int ${1:intName} ${2:operation} ${3:number}"
-    },
-    "string": {
-      "prefix": "string",
-      "body": "string ${1:stringName} set ${2:text}"
-    },
-    "cutscene": {
-      "prefix": "cutscene",
-      "body": "cutscene ${1|on,off|}"
+      "body": "item ${1|get,take|} ${2:ITEM_NAME}",
+      "description": "Gives an item to the player or takes an item from the player."
     },
     "goto": {
       "prefix": "goto",
-      "body": "goto #${1:label}"
+      "body": "goto #${1:label}",
+      "description": "Makes the script jump to the label you specify and does not come back, making it ideal for splitting paths."
     },
     "call": {
       "prefix": "call",
-      "body": "call #${1:label}"
+      "body": "call #${1:label}",
+      "description": "Like goto, but once it reaches a \"quit\" in the [#label] called, instead of quitting, it will come back and run what comes after the call."
+    },
+    "jump": {
+      "prefix": "jump",
+      "body": "jump #${1:label}",
+      "description": "This Action is identical to goto unless we are currently in a label that was ran using the call Action."
     },
     "newthread": {
       "prefix": "newthread",
-      "body": "newthread #${1:label}"
+      "body": "newthread #${1:label}",
+      "description": "Like call, but allows the script to continue running without taking into account any of the delays in the label you called."
     },
-    "reply": {
-      "prefix": "reply",
-      "body": "reply ${1:option number}|${2:text shown to player}|#${3:label to call if chosen}"
+    "set": {
+      "prefix": "set",
+      "body": "set ${1:package} ${2:value}",
+      "description": "Sets the [value] of [package]. If you want to set the value of a package to the value of another package, you have to unwrap it in the value argument with { }."
     },
-    "lookat": {
-      "prefix": "lookat",
-      "body": "lookat ${1:block coords}"
+    "setadd": {
+      "prefix": "setadd",
+      "body": "setadd ${1:package} ${2:number or package}",
+      "description": "Adds the second argument to the first argument."
+    },
+    "setsub": {
+      "prefix": "setsub",
+      "body": "setsub ${1:package} ${2:number or package}",
+      "description": "Subtracts the second argument from the first argument."
+    },
+    "setmul": {
+      "prefix": "setmul",
+      "body": "setmul ${1:package} ${2:number or package}",
+      "description": "Multiplies the second argument with the first argument."
+    },
+    "setdiv": {
+      "prefix": "setdiv",
+      "body": "setdiv ${1:package} ${2:number or package}",
+      "description": "Divides the second argument from the first argument."
+    },
+    "setmod": {
+      "prefix": "setmod",
+      "body": "setmod ${1:package} ${2:number or package}",
+      "description": "Sets the first argument to the remainder of an integer division between the first argument and the second argument."
+    },
+    "setrandrange": {
+      "prefix": "setrandrange",
+      "body": "setrandrange ${1:package} ${2:number or package} ${3:number or package}",
+      "description": "Sets the first argument to a random integer that is within the range of the second and third args."
+    },
+    "setrandrangedecimal": {
+      "prefix": "setrandrangedecimal",
+      "body": "setrandrangedecimal ${1:package} ${2:number or package} ${3:number or package}",
+      "description": "Sets the first argument to a random number that is within the range of the second and third args."
+    },
+    "setrandlist": {
+      "prefix": "setrandlist",
+      "body": "setrandlist ${1:package} ${2:list}",
+      "description": "Sets the first argument to one of the given values that are separated by the | symbol."
+    },
+    "setround": {
+      "prefix": "setround",
+      "body": "setround ${1:package}",
+      "description": "Rounds the value of the package to the nearest integer."
+    },
+    "setroundup": {
+      "prefix": "setroundup",
+      "body": "setroundup ${1:package}",
+      "description": "Rounds the value of the package up to the next integer. For example, 1.1 becomes 2."
+    },
+    "setrounddown": {
+      "prefix": "setrounddown",
+      "body": "setrounddown ${1:package}",
+      "description": "Rounds the value of the package down to the next integer. For example, 1.9 becomes 1."
+    },
+    "setblockid": {
+      "prefix": "setblockid",
+      "body": "setblockid ${1:package} ${2:X} ${3:Y} ${4:Z}",
+      "description": "Sets the value of [package] to the ID of the block at the given [block coordinates]."
+    },
+    "show": {
+      "prefix": "show",
+      "body": "show ${1:packages...}",
+      "description": "Displays the value of all the packages given, for testing and debug purposes."
+    },
+    "resetdata": {
+      "prefix": "resetdata",
+      "body": "resetdata ${1|packages,items,saved|} ${2:search pattern}",
+      "description": "Used to reset data."
+    },
+    "freeze": {
+      "prefix": "freeze",
+      "body": "freeze",
+      "description": "Freezes the player in place. They can still fall if mid-air or swim up and down in liquid or ladders, though."
+    },
+    "unfreeze": {
+      "prefix": "unfreeze",
+      "body": "unfreeze",
+      "description": "Unfreezes the player."
+    },
+    "look": {
+      "prefix": "look",
+      "body": "look ${1:X} ${2:Y} ${3:Z}",
+      "description": "Makes the player look at the given coordinates. They can move their camera afterwards."
+    },
+    "stare": {
+      "prefix": "stare",
+      "body": "stare ${1:X} ${2:Y} ${3:Z}",
+      "description": "Forces the player to continually stare at the given coordinates. You can free their camera by not providing any coordinates to this action."
     },
     "env": {
       "prefix": "env",
-      "body": "env ${1:property} ${2:value}"
+      "body": "env ${1:property} ${2:value}",
+      "description": "Temporarily changes env values for the player who runs the script."
     },
     "motd": {
       "prefix": "motd",
-      "body": "motd ${1:motd arguments}"
+      "body": "motd ${1:motd arguments}",
+      "description": "Sends an MOTD to the player to control hacks using hacks flags."
+    },
+    "setspawn": {
+      "prefix": "setspawn",
+      "body": "setspawn ${1:X} ${2:Y} ${3:Z}",
+      "description": "Sets the spawn of the player to the coordinates provided."
+    },
+    "reply": {
+      "prefix": "reply",
+      "body": "reply ${1:option number}|${2:text shown to player}|#${3:label to call if chosen}",
+      "description": "Sets up a reply option, which can be chosen by the player by typing [option number] in chat"
+    },
+    "reply_clear": {
+      "prefix": "reply clear",
+      "body": "reply clear",
+      "description": "Clears all current replies from being visible and useable (this includes silent replies)"
+    },
+    "replysilent": {
+      "prefix": "replysilent",
+      "body": "replysilent ${1:option number}|${2:text shown to player}|#${3:label to call if chosen}",
+      "description": "Identical to reply, with two exceptions: Does not notify the player that they should choose a response; Does not remind the player to choose a response if they chat while silent replies are active."
+    },
+    "replysilent_clear": {
+      "prefix": "replysilent clear",
+      "body": "replysilent clear",
+      "description": "Clears all current replies from being visible and useable (this includes non-silent replies)"
+    },
+    "reach": {
+      "prefix": "reach",
+      "body": "reach ${1:distance}",
+      "description": "Temporarily sets the player's reach distance, in blocks."
     },
     "quit": {
       "prefix": "quit",
-      "body": "quit"
+      "body": "quit",
+      "description": "Typically this tells the script to stop running."
+    },
+    "terminate": {
+      "prefix": "terminate",
+      "body": "terminate",
+      "description": "This tells the script to stop running completely, even if we are in a nested label that was called from somewhere else using \"call\"."
     }
   }
 }
