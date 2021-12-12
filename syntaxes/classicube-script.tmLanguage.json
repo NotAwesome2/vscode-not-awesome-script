@@ -49,11 +49,11 @@
     },
     "command": {
       "name": "keyword.operator.new.classicube-script",
-      "match": "\\b(kill|tempblock|tempchunk|delay|item|goto|call|jump|newthread|set|setadd|setsub|setmul|setdiv|setmod|setrandrange|setrandrangedecimal|setrandlist|setround|setroundup|setrounddown|setblockid|show|resetdata|freeze|unfreeze|look|stare|env|motd|setspawn|reply|replysilent|reach|quit|terminate|if|ifnot)\\b"
+      "match": "\\b(tempblock|tempchunk|delay|item|goto|call|jump|newthread|set|setadd|setsub|setmul|setdiv|setmod|setrandrange|setrandrangedecimal|setrandlist|setround|setroundup|setrounddown|setblockid|show|resetdata|freeze|unfreeze|look|stare|env|motd|setspawn|reply|replysilent|reach|quit|terminate|if|ifnot)\\b"
     },
     "command-with-interpolated-string": {
       "name": "keyword.operator.new.classicube-script",
-      "begin": "\\b(msg|cpemsg|cmd)\\b",
+      "begin": "\\b(msg|cpemsg|cmd|kill)\\b",
       "end": "$",
       "patterns": [{ "include": "#interpolated-string" }]
     },
