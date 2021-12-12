@@ -20,7 +20,7 @@
     },
     "keyword-control": {
       "name": "keyword.control.classicube-script",
-      "match": "\\b(goto|call|jump|quit)\\b"
+      "match": "\\b(goto|call|jump|quit|newthread|terminate)\\b"
     },
     "variable": {
       "name": "variable.other.classicube-script",
