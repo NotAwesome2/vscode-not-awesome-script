@@ -37,7 +37,6 @@
           "not-awesome-script"
         ],
         "extensions": [
-          ".ccs",
           ".nas"
         ],
         "configuration": "./language-configuration.json"
