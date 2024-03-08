@@ -5,7 +5,7 @@
   "license": "MIT",
   "version": "2.0.2",
   "engines": {
-    "vscode": "^1.51.0"
+    "vscode": "^1.86.0"
   },
   "publisher": "SpiralP",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=SpiralP.classicube-script",
@@ -26,6 +26,8 @@
   "categories": [
     "Programming Languages"
   ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
   "contributes": {
     "languages": [
       {
@@ -54,6 +56,31 @@
         "language": "classicube-script",
         "path": "./snippets/classicube-script.json"
       }
+    ],
+    "commands": [
+      {
+        "command": "classicube-script.helloWorld",
+        "title": "Hello World"
+      }
     ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.87.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.6",
+    "@vscode/test-electron": "^2.3.9"
   }
 }
