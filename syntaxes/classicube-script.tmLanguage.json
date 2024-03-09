@@ -2,21 +2,41 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "ClassiCube Script",
   "patterns": [
-    { "include": "#label" },
-    { "include": "#keyword-control" },
-    { "include": "#variable-name" },
-    { "include": "#comment" },
-    { "include": "#numeric-literal" },
-    { "include": "#boolean-literal" },
-    { "include": "#command-with-interpolated-string" },
-    { "include": "#command" },
-    { "include": "#builtin-variable" },
-    { "include": "#variable-in-string" }
+    {
+      "include": "#label"
+    },
+    {
+      "include": "#keyword-control"
+    },
+    {
+      "include": "#variable-name"
+    },
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#numeric-literal"
+    },
+    {
+      "include": "#boolean-literal"
+    },
+    {
+      "include": "#command-with-interpolated-string"
+    },
+    {
+      "include": "#command"
+    },
+    {
+      "include": "#builtin-variable"
+    },
+    {
+      "include": "#variable-in-string"
+    }
   ],
   "repository": {
     "label": {
       "name": "entity.name.function.classicube-script",
-      "match": "#(.*)\\b"
+      "match": "#[a-zA-Z0-9_\\-\\.]+"
     },
     "keyword-control": {
       "name": "keyword.control.classicube-script",
@@ -24,15 +44,19 @@
     },
     "variable": {
       "name": "variable.other.classicube-script",
-      "match": "[a-zA-Z_][a-zA-Z0-9_\\-]*"
+      "match": "[a-zA-Z0-9_\\-\\.]*"
     },
     "variable-name": {
       "name": "keyword.operator.new.classicube-script",
       "begin": "{",
       "end": "}",
       "patterns": [
-        { "include": "#builtin-variable" },
-        { "include": "#variable" }
+        {
+          "include": "#builtin-variable"
+        },
+        {
+          "include": "#variable"
+        }
       ]
     },
     "comment": {
@@ -55,7 +79,11 @@
       "name": "keyword.operator.new.classicube-script",
       "begin": "\\b(msg|cpemsg|cmd|kill)\\b",
       "end": "$",
-      "patterns": [{ "include": "#interpolated-string" }]
+      "patterns": [
+        {
+          "include": "#interpolated-string"
+        }
+      ]
     },
     "builtin-variable": {
       "name": "support.type.builtin.classicube-script",
@@ -66,9 +94,15 @@
       "begin": " ",
       "end": "$",
       "patterns": [
-        { "include": "#color-code" },
-        { "include": "#variable-in-string" },
-        { "include": "#variable-name" }
+        {
+          "include": "#color-code"
+        },
+        {
+          "include": "#variable-in-string"
+        },
+        {
+          "include": "#variable-name"
+        }
       ]
     },
     "variable-in-string": {
