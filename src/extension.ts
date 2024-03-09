@@ -5,8 +5,13 @@ import * as vscode from "vscode";
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  const wordRegex = new RegExp(/(#[a-zA-Z0-9_\-\.]+)/g);
-  const definitionRegex = new RegExp(/^(\s*)(#[a-zA-Z0-9_\-\.]+)/);
+  const variableRegex = new RegExp(/([a-zA-Z0-9_\-\.]+)/g);
+  const variableAssignRegex = new RegExp(
+    /^(\s*)((?:set|setsplit|setadd|setblockid|setdirvector|setdiv|setmod|setmul|setrandrange|setrandrangedecimal|setround|setrounddown|setroundup|setsub)\s+)([a-zA-Z0-9_\-\.]+)/
+  );
+
+  const functionLabelRegex = new RegExp(/(#[a-zA-Z0-9_\-\.]+)/g);
+  const functionDefinitionRegex = new RegExp(/^(\s*)(#[a-zA-Z0-9_\-\.]+)/);
 
   let disposable = vscode.languages.registerDefinitionProvider(
     "classicube-script",
@@ -14,38 +19,81 @@ export function activate(context: vscode.ExtensionContext) {
       provideDefinition(document, position, token) {
         const locations: vscode.LocationLink[] = [];
 
-        const wordRange = document.getWordRangeAtPosition(position, wordRegex);
-        if (wordRange) {
-          const word = document.getText(wordRange);
+        const functionWordRange = document.getWordRangeAtPosition(
+          position,
+          functionLabelRegex
+        );
+        if (functionWordRange) {
+          const word = document.getText(functionWordRange);
 
           for (let line = 0; line < document.lineCount; line++) {
             const textLine = document.lineAt(line);
 
-            const match = textLine.text.match(definitionRegex);
+            const match = textLine.text.match(functionDefinitionRegex);
             if (match?.[2] === word) {
-              const start = match[1].length ?? 0;
-              const end = start + match[2].length;
+              const whitespaceEnd = match[1].length ?? 0;
+              const codeEnd = whitespaceEnd + match[2].length;
 
               locations.push({
                 // full line match
                 targetRange: textLine.range.with({
                   start: textLine.range.start.with({
                     // without beginning whitespace
-                    character: start,
+                    character: whitespaceEnd,
                   }),
                 }),
                 targetUri: document.uri,
-                originSelectionRange: wordRange,
+                originSelectionRange: functionWordRange,
                 // only name match
                 targetSelectionRange: new vscode.Range(
                   textLine.range.start.with({
-                    character: start,
+                    character: whitespaceEnd,
                   }),
                   textLine.range.end.with({
-                    character: end,
+                    character: codeEnd,
                   })
                 ),
               });
+            }
+          }
+        } else {
+          const variableWordRange = document.getWordRangeAtPosition(
+            position,
+            variableRegex
+          );
+          if (variableWordRange) {
+            const word = document.getText(variableWordRange);
+
+            for (let line = 0; line < document.lineCount; line++) {
+              const textLine = document.lineAt(line);
+
+              const match = textLine.text.match(variableAssignRegex);
+              if (match?.[3] === word) {
+                const whitespaceEnd = match[1].length ?? 0;
+                const codeStart = whitespaceEnd + (match[2].length ?? 0);
+                const codeEnd = codeStart + match[3].length;
+
+                locations.push({
+                  // full line match
+                  targetRange: textLine.range.with({
+                    start: textLine.range.start.with({
+                      // without beginning whitespace
+                      character: whitespaceEnd,
+                    }),
+                  }),
+                  targetUri: document.uri,
+                  originSelectionRange: variableWordRange,
+                  // only name match
+                  targetSelectionRange: new vscode.Range(
+                    textLine.range.start.with({
+                      character: codeStart,
+                    }),
+                    textLine.range.end.with({
+                      character: codeEnd,
+                    })
+                  ),
+                });
+              }
             }
           }
         }
@@ -60,30 +108,66 @@ export function activate(context: vscode.ExtensionContext) {
     provideReferences(document, position, context, token) {
       const locations: vscode.Location[] = [];
 
-      const wordRange = document.getWordRangeAtPosition(position, wordRegex);
-      if (wordRange) {
-        const word = document.getText(wordRange);
+      const functionWordRange = document.getWordRangeAtPosition(
+        position,
+        functionLabelRegex
+      );
+      if (functionWordRange) {
+        const word = document.getText(functionWordRange);
 
         for (let line = 0; line < document.lineCount; line++) {
           const textLine = document.lineAt(line);
-          for (const match of textLine.text.matchAll(wordRegex)) {
+          for (const match of textLine.text.matchAll(functionLabelRegex)) {
             if (match?.[1] === word) {
-              const start = match.index ?? 0;
-              const end = start + match[1].length;
+              const codeStart = match.index ?? 0;
+              const codeEnd = codeStart + match[1].length;
 
               locations.push(
                 new vscode.Location(
                   document.uri,
                   new vscode.Range(
                     textLine.range.start.with({
-                      character: start,
+                      character: codeStart,
                     }),
                     textLine.range.end.with({
-                      character: end,
+                      character: codeEnd,
                     })
                   )
                 )
               );
+            }
+          }
+        }
+      } else {
+        const variableWordRange = document.getWordRangeAtPosition(
+          position,
+          variableRegex
+        );
+        if (variableWordRange) {
+          const word = document.getText(variableWordRange);
+
+          for (let line = 0; line < document.lineCount; line++) {
+            const textLine = document.lineAt(line);
+
+            for (const match of textLine.text.matchAll(variableRegex)) {
+              if (match?.[1] === word) {
+                const codeStart = match.index ?? 0;
+                const codeEnd = codeStart + match[1].length;
+
+                locations.push(
+                  new vscode.Location(
+                    document.uri,
+                    new vscode.Range(
+                      textLine.range.start.with({
+                        character: codeStart,
+                      }),
+                      textLine.range.end.with({
+                        character: codeEnd,
+                      })
+                    )
+                  )
+                );
+              }
             }
           }
         }
