@@ -1,53 +1,277 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "ClassiCube Script",
+  "scopeName": "source.nas",
   "patterns": [
-    {
-      "include": "#label"
-    },
-    {
-      "include": "#keyword-control"
-    },
-    {
-      "include": "#variable-name"
-    },
     {
       "include": "#comment"
     },
     {
-      "include": "#numeric-literal"
+      "include": "#function-label-definition"
     },
     {
-      "include": "#boolean-literal"
-    },
-    {
-      "include": "#command-with-interpolated-string"
-    },
-    {
-      "include": "#command"
-    },
-    {
-      "include": "#builtin-variable"
-    },
-    {
-      "include": "#variable-in-string"
+      "include": "#top-expression"
     }
   ],
   "repository": {
-    "label": {
-      "name": "entity.name.function.classicube-script",
-      "match": "#[a-zA-Z0-9_\\-\\.]+"
+    "top-expression": {
+      "name": "meta.top-expression.nas",
+      "begin": "^\\s*",
+      "end": "$",
+      "patterns": [
+        {
+          "include": "#expression"
+        }
+      ]
+    },
+    "expression": {
+      "patterns": [
+        {
+          "include": "#keyword-control"
+        },
+        {
+          "include": "#command"
+        }
+      ]
     },
     "keyword-control": {
-      "name": "keyword.control.classicube-script",
-      "match": "\\b(goto|call|jump|quit|newthread|terminate)\\b"
+      "patterns": [
+        {
+          "include": "#keyword-control-no-args"
+        },
+        {
+          "include": "#keyword-control-with-args"
+        }
+      ]
     },
-    "variable": {
-      "name": "variable.other.classicube-script",
-      "match": "[a-zA-Z0-9_\\-\\.]*"
+    "keyword-control-no-args": {
+      "name": "keyword.control.keyword-control-no-args.nas",
+      "match": "\\b(quit|terminate)\\b"
+    },
+    "keyword-control-with-args": {
+      "name": "meta.keyword-control-with-args.nas",
+      "begin": "\\b(goto|call|jump|newthread)\\b",
+      "end": "$",
+      "beginCaptures": {
+        "0": {
+          "name": "keyword.control.keyword-control-with-args.nas"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#function-label"
+        },
+        {
+          "include": "#call-args"
+        },
+        {
+          "include": "#value-expression"
+        }
+      ]
+    },
+    "call-args": {
+      "name": "meta.call-args.nas",
+      "begin": "\\|",
+      "end": "$",
+      "patterns": [
+        {
+          "include": "#value-expression"
+        },
+        {
+          "include": "#variable-name"
+        }
+      ]
+    },
+    "command": {
+      "patterns": [
+        {
+          "include": "#command-if"
+        },
+        {
+          "include": "#command-set"
+        },
+        {
+          "include": "#command-with-literal-args"
+        },
+        {
+          "include": "#command-other"
+        }
+      ]
+    },
+    "command-if": {
+      "name": "meta.command-if.nas",
+      "begin": "\\b(if|ifnot)\\b",
+      "end": "$",
+      "beginCaptures": {
+        "0": {
+          "name": "keyword.control.command-if.nas"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#if-condition"
+        },
+        {
+          "include": "#expression"
+        }
+      ]
+    },
+    "if-condition": {
+      "begin": "\\s+",
+      "end": "\\s+",
+      "patterns": [
+        {
+          "include": "#variable"
+        },
+        {
+          "include": "#if-condition-operator-args"
+        }
+      ]
+    },
+    "if-condition-operator-args": {
+      "name": "meta.if-condition-operator-args.nas",
+      "begin": "\\|",
+      "end": "\\|",
+      "patterns": [
+        {
+          "include": "#if-condition-operator"
+        }
+      ]
+    },
+    "if-condition-operator": {
+      "name": "keyword.operator.if-condition-operator.nas",
+      "match": "[\\=\\<\\>\\!=\\<=\\>=]"
+    },
+    "command-set": {
+      "name": "meta.command-set.nas",
+      "begin": "\\b(set|setsplit)\\b",
+      "end": "$",
+      "beginCaptures": {
+        "0": {
+          "name": "keyword.operator.new.command-set.nas"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#set-variable"
+        },
+        {
+          "include": "#value-expression-until-end"
+        }
+      ]
+    },
+    "command-with-literal-args": {
+      "name": "meta.command-with-literal-args.nas",
+      "begin": "\\b(setadd|setblockid|setdirvector|setdiv|setmod|setmul|setrandrange|setrandrangedecimal|setround|setrounddown|setroundup|setsub)\\b",
+      "end": "$",
+      "beginCaptures": {
+        "0": {
+          "name": "keyword.operator.new.command-with-literal-args.nas"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#set-variable"
+        },
+        {
+          "include": "#variable"
+        },
+        {
+          "include": "#variable-value"
+        }
+      ]
+    },
+    "command-other": {
+      "name": "keyword.operator.new.command-other.nas",
+      "begin": "\\b(award|boost|changemodel|cmd|cpe|cpemsg|definehotkey|delay|effect|env|freeze|kill|look|motd|msg|placeblock|reach|reply|replysilent|resetdata|set|setrandlist|setspawn|show|stare|tempblock|tempchunk|undefinehotkey|unfreeze)\\b",
+      "end": "$",
+      "beginCaptures": {
+        "0": {
+          "name": "keyword.operator.new.command-other.nas"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#value-expression-until-end"
+        }
+      ]
+    },
+    "set-variable": {
+      "name": "invalid.set-variable.nas",
+      "begin": "\\s+",
+      "end": "\\s+",
+      "patterns": [
+        {
+          "include": "#variable"
+        },
+        {
+          "include": "#variable-value"
+        }
+      ]
+    },
+    "value-expression-until-end": {
+      "name": "string.value-expression-until-end.nas",
+      "begin": "",
+      "end": "$",
+      "patterns": [
+        {
+          "include": "#value-expression"
+        }
+      ]
+    },
+    "value-expression": {
+      "patterns": [
+        {
+          "include": "#boolean-literal"
+        },
+        {
+          "include": "#numeric-literal"
+        },
+        {
+          "include": "#color-code"
+        },
+        {
+          "include": "#variable-in-string"
+        },
+        {
+          "include": "#variable-value"
+        }
+      ]
+    },
+    "function-label": {
+      "name": "entity.name.function.nas",
+      "match": "#[a-zA-Z0-9_\\-\\.]+"
+    },
+    "variable-index": {
+      "name": "keyword.operator.new.variable-index.nas",
+      "begin": "\\[",
+      "end": "\\]",
+      "patterns": [
+        {
+          "include": "#numeric-literal"
+        },
+        {
+          "include": "#variable-value"
+        }
+      ]
     },
     "variable-name": {
-      "name": "keyword.operator.new.classicube-script",
+      "name": "variable.other.variable-name.nas",
+      "match": "[a-zA-Z0-9_\\-\\.]+"
+    },
+    "variable": {
+      "name": "variable.other.variable.nas",
+      "patterns": [
+        {
+          "include": "#variable-name"
+        },
+        {
+          "include": "#variable-index"
+        }
+      ]
+    },
+    "variable-value": {
+      "name": "keyword.operator.new.variable-value.nas",
       "begin": "{",
       "end": "}",
       "patterns": [
@@ -56,63 +280,39 @@
         },
         {
           "include": "#variable"
+        },
+        {
+          "include": "#variable-value"
         }
       ]
     },
     "comment": {
-      "name": "comment.line.classicube-script",
+      "name": "comment.line.nas",
       "match": "^\\s*//.*"
     },
+    "function-label-definition": {
+      "name": "entity.name.function.nas",
+      "match": "^\\s*#[a-zA-Z0-9_\\-\\.]+"
+    },
     "numeric-literal": {
-      "name": "constant.numeric.classicube-script",
+      "name": "constant.numeric.nas",
       "match": "\\b[0-9]+\\b"
     },
     "boolean-literal": {
-      "name": "constant.language.classicube-script",
+      "name": "constant.language.nas",
       "match": "\\b(true|false)\\b"
     },
-    "command": {
-      "name": "keyword.operator.new.classicube-script",
-      "match": "\\b(if|ifnot|msg|delay|goto|jump|call|set|setadd|setsub|setmul|setdiv|setmod|setrandrange|setrandrangedecimal|setrandlist|setround|setroundup|setrounddown|quit|terminate|show|kill|cmd|resetdata|freeze|unfreeze|look|stare|newthread|env|motd|setspawn|reply|replysilent|cpe|setround|setrounddown|setroundup|reach|setblockid|tempblock|tempchunk|definehotkey|undefinehotkey|placeblock|changemodel|setdirvector|award|setsplit)\\b"
-    },
-    "command-with-interpolated-string": {
-      "name": "keyword.operator.new.classicube-script",
-      "begin": "\\b(msg|cpemsg|cmd|kill)\\b",
-      "end": "$",
-      "patterns": [
-        {
-          "include": "#interpolated-string"
-        }
-      ]
-    },
     "builtin-variable": {
-      "name": "support.type.builtin.classicube-script",
+      "name": "support.type.builtin.nas",
       "match": "\\b(cef|MBX|MBY|MBZ|PlayerX|PlayerY|PlayerZ|PlayerPX|PlayerPY|PlayerPZ|PlayerYaw|PlayerPitch|msgDelay|msgDelayMultiplier|MBCoords|PlayerCoords|PlayerCoordsDecimal|PlayerCoordsPrecise|runArg0|runArg1|runArg2|runArg3|runArg4|runArg5|runArg6|runArg7|runArg8|runArg9|epochMS)\\b"
     },
-    "interpolated-string": {
-      "name": "string.interpolated.classicube-script",
-      "begin": " ",
-      "end": "$",
-      "patterns": [
-        {
-          "include": "#color-code"
-        },
-        {
-          "include": "#variable-in-string"
-        },
-        {
-          "include": "#variable-name"
-        }
-      ]
-    },
-    "variable-in-string": {
-      "name": "support.type.builtin.classicube-script",
+    "string-variable": {
+      "name": "support.type.builtin.nas",
       "match": "(@nick|@p)"
     },
     "color-code": {
-      "name": "constant.character.escape.classicube-script",
+      "name": "constant.character.escape.nas",
       "match": "(%|&)[0-9a-zA-z]"
     }
-  },
-  "scopeName": "source.classicube-script"
+  }
 }

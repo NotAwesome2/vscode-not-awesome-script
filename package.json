@@ -47,7 +47,7 @@
     "grammars": [
       {
         "language": "classicube-script",
-        "scopeName": "source.classicube-script",
+        "scopeName": "source.nas",
         "path": "./syntaxes/classicube-script.tmLanguage.json"
       }
     ],
