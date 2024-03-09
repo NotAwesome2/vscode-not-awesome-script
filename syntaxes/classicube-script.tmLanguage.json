@@ -91,7 +91,7 @@
           "include": "#command-set"
         },
         {
-          "include": "#command-with-literal-args"
+          "include": "#command-set-with-literal-args"
         },
         {
           "include": "#command-other"
@@ -160,13 +160,13 @@
         }
       ]
     },
-    "command-with-literal-args": {
-      "name": "meta.command-with-literal-args.nas",
+    "command-set-with-literal-args": {
+      "name": "meta.command-set-with-literal-args.nas",
       "begin": "\\b(setadd|setblockid|setdirvector|setdiv|setmod|setmul|setrandrange|setrandrangedecimal|setround|setrounddown|setroundup|setsub)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {
-          "name": "keyword.operator.new.command-with-literal-args.nas"
+          "name": "keyword.operator.new.command-set-with-literal-args.nas"
         }
       },
       "patterns": [
@@ -174,10 +174,7 @@
           "include": "#set-variable"
         },
         {
-          "include": "#variable"
-        },
-        {
-          "include": "#variable-value"
+          "include": "#value-expression-unwrapped"
         }
       ]
     },
@@ -231,7 +228,26 @@
           "include": "#color-code"
         },
         {
-          "include": "#variable-in-string"
+          "include": "#variable-value"
+        }
+      ]
+    },
+    "value-expression-unwrapped": {
+      "patterns": [
+        {
+          "include": "#boolean-literal"
+        },
+        {
+          "include": "#numeric-literal"
+        },
+        {
+          "include": "#color-code"
+        },
+        {
+          "include": "#builtin-variable"
+        },
+        {
+          "include": "#variable"
         },
         {
           "include": "#variable-value"
