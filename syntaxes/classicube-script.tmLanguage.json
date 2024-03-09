@@ -156,7 +156,7 @@
           "include": "#set-variable"
         },
         {
-          "include": "#value-expression-until-end"
+          "include": "#string"
         }
       ]
     },
@@ -189,7 +189,7 @@
       },
       "patterns": [
         {
-          "include": "#value-expression-until-end"
+          "include": "#string"
         }
       ]
     },
@@ -206,8 +206,8 @@
         }
       ]
     },
-    "value-expression-until-end": {
-      "name": "string.value-expression-until-end.nas",
+    "string": {
+      "name": "string.string.nas",
       "begin": "",
       "end": "$",
       "patterns": [
@@ -233,6 +233,9 @@
       ]
     },
     "value-expression-unwrapped": {
+      "name": "meta.value-expression-unwrapped.nas",
+      "begin": "",
+      "end": "$",
       "patterns": [
         {
           "include": "#boolean-literal"
