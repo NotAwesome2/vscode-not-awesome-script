@@ -4,7 +4,7 @@ Provides simple syntax highlighting and snippets for writing .nas files that can
 
 ## References
 
-- [ScriptGuide2.txt](https://notawesome.cc/docs/nas/getting-started.txt)
+- [getting-started.txt](https://notawesome.cc/docs/nas/getting-started.txt)
 - [example.nas](https://notawesome.cc/docs/nas/example.nas)
 - [documentation.nas](https://notawesome.cc/docs/nas/documentation.nas)
 
