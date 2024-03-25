@@ -46,7 +46,7 @@
     },
     "keyword-control-no-args": {
       "name": "keyword.control.keyword-control-no-args.nas",
-      "match": "\\b(quit|terminate)\\b"
+      "match": "\\b(include|quit|terminate|using)\\b"
     },
     "keyword-control-with-args": {
       "name": "meta.keyword-control-with-args.nas",
