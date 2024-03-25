@@ -180,7 +180,7 @@
     },
     "command-other": {
       "name": "keyword.operator.new.command-other.nas",
-      "begin": "\\b(award|boost|changemodel|cmd|cpe|cpemsg|definehotkey|delay|effect|env|freeze|kill|look|motd|msg|placeblock|reach|reply|replysilent|resetdata|set|setrandlist|setspawn|show|stare|tempblock|tempchunk|undefinehotkey|unfreeze)\\b",
+      "begin": "\\b(award|boost|changemodel|cmd|cpe|cpemsg|definehotkey|delay|effect|env|freeze|kill|look|motd|msg|placeblock|reach|registerclick|reply|replysilent|resetdata|set|setrandlist|setspawn|show|stare|tempblock|tempchunk|undefinehotkey|unfreeze)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {
