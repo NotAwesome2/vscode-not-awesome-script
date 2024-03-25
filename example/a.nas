@@ -1,3 +1,12 @@
+include advlib
+include os/goodlyay+24
+
+using quit_resets_runargs
+using allow_include
+
+
+set hehe You can use @p to substitute their full player name (includes the +) or @nick to subtitute for a more natural version of their name (e.g. Mike_30+ becomes Mike)
+
 #Error
     #Error.HandleMenu
 

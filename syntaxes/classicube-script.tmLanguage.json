@@ -40,6 +40,9 @@
           "include": "#keyword-control-no-args"
         },
         {
+          "include": "#keyword-control-with-string-args"
+        },
+        {
           "include": "#keyword-control-with-args"
         }
       ]
@@ -48,9 +51,26 @@
       "name": "keyword.control.keyword-control-no-args.nas",
       "match": "\\b(quit|terminate)\\b"
     },
+    "keyword-control-with-string-args": {
+      "name": "meta.keyword-control-with-string-args.nas",
+      "begin": "\\b(include|using)\\b",
+      "end": "$",
+      "beginCaptures": {
+        "0": {
+          "name": "keyword.control.keyword-control-with-string-args.nas"
+        }
+      },
+      "patterns": [
+        {
+          "name": "string.keyword-control-with-string-args.nas",
+          "begin": "",
+          "end": "$"
+        }
+      ]
+    },
     "keyword-control-with-args": {
       "name": "meta.keyword-control-with-args.nas",
-      "begin": "\\b(goto|call|jump|newthread)\\b",
+      "begin": "\\b(call|goto|jump|newthread)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {
@@ -144,7 +164,7 @@
     },
     "command-set": {
       "name": "meta.command-set.nas",
-      "begin": "\\b(set|setsplit)\\b",
+      "begin": "\\b(set|setlength|setsplit)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {
@@ -180,7 +200,7 @@
     },
     "command-other": {
       "name": "keyword.operator.new.command-other.nas",
-      "begin": "\\b(award|boost|changemodel|cmd|cpe|cpemsg|definehotkey|delay|effect|env|freeze|kill|look|motd|msg|placeblock|reach|reply|replysilent|resetdata|set|setrandlist|setspawn|show|stare|tempblock|tempchunk|undefinehotkey|unfreeze)\\b",
+      "begin": "\\b(award|boost|changemodel|cmd|cpe|cpemsg|definehotkey|delay|effect|env|error|freeze|kill|look|motd|msg|placeblock|reach|registerclick|reply|replysilent|resetdata|set|setrandlist|setspawn|show|stare|tempblock|tempchunk|undefinehotkey|unfreeze)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {
@@ -223,6 +243,9 @@
         },
         {
           "include": "#numeric-literal"
+        },
+        {
+          "include": "#string-builtin-variable"
         },
         {
           "include": "#color-code"
@@ -325,8 +348,8 @@
       "name": "support.type.builtin.nas",
       "match": "\\b(cef|MBX|MBY|MBZ|PlayerX|PlayerY|PlayerZ|PlayerPX|PlayerPY|PlayerPZ|PlayerYaw|PlayerPitch|msgDelay|msgDelayMultiplier|MBCoords|PlayerCoords|PlayerCoordsDecimal|PlayerCoordsPrecise|runArg0|runArg1|runArg2|runArg3|runArg4|runArg5|runArg6|runArg7|runArg8|runArg9|epochMS)\\b"
     },
-    "string-variable": {
-      "name": "support.type.builtin.nas",
+    "string-builtin-variable": {
+      "name": "support.type.builtin.string-builtin-variable.nas",
       "match": "(@nick|@p)"
     },
     "color-code": {
