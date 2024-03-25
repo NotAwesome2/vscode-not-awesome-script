@@ -40,17 +40,37 @@
           "include": "#keyword-control-no-args"
         },
         {
+          "include": "#keyword-control-with-string-args"
+        },
+        {
           "include": "#keyword-control-with-args"
         }
       ]
     },
     "keyword-control-no-args": {
       "name": "keyword.control.keyword-control-no-args.nas",
-      "match": "\\b(include|quit|terminate|using)\\b"
+      "match": "\\b(quit|terminate)\\b"
+    },
+    "keyword-control-with-string-args": {
+      "name": "meta.keyword-control-with-string-args.nas",
+      "begin": "\\b(include|using)\\b",
+      "end": "$",
+      "beginCaptures": {
+        "0": {
+          "name": "keyword.control.keyword-control-with-string-args.nas"
+        }
+      },
+      "patterns": [
+        {
+          "name": "string.keyword-control-with-string-args.nas",
+          "begin": "",
+          "end": "$"
+        }
+      ]
     },
     "keyword-control-with-args": {
       "name": "meta.keyword-control-with-args.nas",
-      "begin": "\\b(goto|call|jump|newthread)\\b",
+      "begin": "\\b(call|goto|jump|newthread)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {
@@ -225,6 +245,9 @@
           "include": "#numeric-literal"
         },
         {
+          "include": "#string-builtin-variable"
+        },
+        {
           "include": "#color-code"
         },
         {
@@ -325,8 +348,8 @@
       "name": "support.type.builtin.nas",
       "match": "\\b(cef|MBX|MBY|MBZ|PlayerX|PlayerY|PlayerZ|PlayerPX|PlayerPY|PlayerPZ|PlayerYaw|PlayerPitch|msgDelay|msgDelayMultiplier|MBCoords|PlayerCoords|PlayerCoordsDecimal|PlayerCoordsPrecise|runArg0|runArg1|runArg2|runArg3|runArg4|runArg5|runArg6|runArg7|runArg8|runArg9|epochMS)\\b"
     },
-    "string-variable": {
-      "name": "support.type.builtin.nas",
+    "string-builtin-variable": {
+      "name": "support.type.builtin.string-builtin-variable.nas",
       "match": "(@nick|@p)"
     },
     "color-code": {
