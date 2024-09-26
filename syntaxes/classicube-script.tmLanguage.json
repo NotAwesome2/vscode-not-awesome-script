@@ -182,7 +182,7 @@
     },
     "command-set-with-literal-args": {
       "name": "meta.command-set-with-literal-args.nas",
-      "begin": "\\b(setadd|setblockid|setdirvector|setdiv|setmod|setmul|setrandrange|setrandrangedecimal|setround|setrounddown|setroundup|setsub)\\b",
+      "begin": "\\b(setadd|setblockid|setcos|setdirvector|setdiv|setfromhexcolor|setmod|setmul|setpow|setrandrange|setrandrangedecimal|setround|setrounddown|setroundup|setsin|setsqrt|setsub|settan|settohexcolor)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {
@@ -200,7 +200,7 @@
     },
     "command-other": {
       "name": "keyword.operator.new.command-other.nas",
-      "begin": "\\b(award|boost|changemodel|cmd|cpe|cpemsg|definehotkey|delay|effect|env|error|freeze|kill|look|motd|msg|placeblock|reach|registerclick|reply|replysilent|resetdata|set|setrandlist|setspawn|show|stare|tempblock|tempchunk|undefinehotkey|unfreeze)\\b",
+      "begin": "\\b(allowmbrepeat|award|boost|changemodel|chatevent|clickevent|cmd|cpe|cpemsg|definehotkey|delay|effect|env|error|freeze|gui|item|kill|look|menumsg|motd|msg|placeblock|reach|registerclick|reply|replysilent|resetdata|set|setdeathspawn|setrandlist|setspawn|show|stare|tempblock|tempchunk|undefinehotkey|unfreeze)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {
