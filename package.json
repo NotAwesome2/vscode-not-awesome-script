@@ -3,7 +3,7 @@
   "displayName": "ClassiCube Script",
   "description": "ClassiCube (Not Awesome) Script language support",
   "license": "MIT",
-  "version": "3.5.0",
+  "version": "3.6.0",
   "engines": {
     "vscode": "^1.86.0"
   },
