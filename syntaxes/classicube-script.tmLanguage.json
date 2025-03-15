@@ -200,7 +200,7 @@
     },
     "command-other": {
       "name": "keyword.operator.new.command-other.nas",
-      "begin": "\\b(allowmbrepeat|award|boost|changemodel|chatevent|clickevent|cmd|cpe|cpemsg|definehotkey|delay|effect|env|error|freeze|gui|item|kill|look|menumsg|motd|msg|placeblock|reach|registerclick|reply|replysilent|resetdata|set|setdeathspawn|setrandlist|setspawn|show|stare|tempblock|tempchunk|undefinehotkey|unfreeze)\\b",
+      "begin": "\\b(allowmbrepeat|award|boost|changemodel|chatevent|clickevent|cmd|cpe|cpemsg|definehotkey|delay|effect|env|error|freeze|gui|item|kill|localmsg|look|menumsg|motd|msg|placeblock|reach|registerclick|reply|replysilent|resetdata|set|setdeathspawn|setrandlist|setspawn|show|stare|tempblock|tempchunk|undefinehotkey|unfreeze)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {
@@ -346,7 +346,7 @@
     },
     "builtin-variable": {
       "name": "support.type.builtin.nas",
-      "match": "\\b(cef|MBX|MBY|MBZ|PlayerX|PlayerY|PlayerZ|PlayerPX|PlayerPY|PlayerPZ|PlayerYaw|PlayerPitch|msgDelay|msgDelayMultiplier|MBCoords|PlayerCoords|PlayerCoordsDecimal|PlayerCoordsPrecise|runArg0|runArg1|runArg2|runArg3|runArg4|runArg5|runArg6|runArg7|runArg8|runArg9|epochMS)\\b"
+      "match": "\\b(cef|MBX|MBY|MBZ|PlayerX|PlayerY|PlayerZ|PlayerPX|PlayerPY|PlayerPZ|PlayerYaw|PlayerPitch|msgDelay|msgDelayMultiplier|MBCoords|PlayerCoords|PlayerCoordsDecimal|PlayerCoordsPrecise|runArg0|runArg1|runArg2|runArg3|runArg4|runArg5|runArg6|runArg7|runArg8|runArg9|epochMS|actionCount|actionLimit)\\b"
     },
     "string-builtin-variable": {
       "name": "support.type.builtin.string-builtin-variable.nas",
