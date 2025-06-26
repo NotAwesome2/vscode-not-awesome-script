@@ -1,9 +1,10 @@
+name: vscode-marketplace-publish
+
 on:
   push:
     tags:
       - "v*.*.*"
 
-name: Publish Extension
 jobs:
   publish:
     runs-on: ubuntu-latest
