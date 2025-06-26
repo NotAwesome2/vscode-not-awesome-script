@@ -1,9 +1,9 @@
 {
   "name": "classicube-script",
+  "version": "3.6.0",
   "displayName": "ClassiCube Script",
   "description": "ClassiCube (Not Awesome) Script language support",
   "license": "MIT",
-  "version": "3.6.0",
   "engines": {
     "vscode": "^1.86.0"
   },
@@ -11,10 +11,10 @@
   "homepage": "https://marketplace.visualstudio.com/items?itemName=SpiralP.classicube-script",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SpiralP/vscode-classicube-script.git"
+    "url": "https://github.com/NotAwesome2/vscode-not-awesome-script.git"
   },
   "bugs": {
-    "url": "https://github.com/SpiralP/vscode-classicube-script/issues"
+    "url": "https://github.com/NotAwesome2/vscode-not-awesome-script/issues"
   },
   "keywords": [
     "classicube-script",

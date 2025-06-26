@@ -1,0 +1,28 @@
+name: build-and-release
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read # for checkout
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+
+  release:
+    uses: SpiralP/github-reusable-workflows/.github/workflows/release.yml@518bac85e62c59bfceb946e0b5b6bbc0d23e6f80 # main
+    needs: build
+    if: "${{ success() && always() && ! startsWith(github.event.head_commit.message, 'chore(release): ') }}"
+    permissions: {} # none, since we use a custom app
+    with:
+      environment-name: release
+      replace-files: |
+        package-lock.json
+        package.json
+      package-name: classicube-script
+    secrets:
+      app-id: ${{ secrets.APP_ID }}
+      app-private-key: ${{ secrets.APP_PRIVATE_KEY }}
