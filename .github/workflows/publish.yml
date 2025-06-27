@@ -1,4 +1,4 @@
-name: vscode-marketplace-publish
+name: publish
 
 on:
   push:
@@ -9,8 +9,11 @@ permissions:
   contents: read # for checkout
 
 jobs:
-  publish:
-    runs-on: ubuntu-latest
+  publish-vs-marketplace:
+    runs-on: ubuntu-24.04
+    environment:
+      name: publish-vs-marketplace
+      url: https://marketplace.visualstudio.com/items?itemName=SpiralP.classicube-script
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
@@ -21,6 +24,16 @@ jobs:
         with:
           pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
           registryUrl: https://marketplace.visualstudio.com
+
+  publish-openvsx:
+    runs-on: ubuntu-24.04
+    environment:
+      name: publish-openvsx
+      url: https://open-vsx.org/extension/SpiralP/classicube-script
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - run: npm install
 
       - name: Publish to Open VSX Registry
         uses: HaaLeo/publish-vscode-extension@ca5561daa085dee804bf9f37fe0165785a9b14db # v2.0.0
