@@ -60,18 +60,20 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",
-    "test": "true"
+    "package": "vsce package",
+    "pretest": "npm run compile && npm run lint",
+    "test": "true",
+    "vscode:prepublish": "npm run compile",
+    "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
-    "@types/vscode": "1.102.0",
     "@types/node": "22.16.5",
+    "@types/vscode": "1.102.0",
     "@typescript-eslint/eslint-plugin": "8.38.0",
     "@typescript-eslint/parser": "8.38.0",
+    "@vscode/vsce": "^3.6.0",
     "eslint": "9.32.0",
     "typescript": "5.8.3"
   }
