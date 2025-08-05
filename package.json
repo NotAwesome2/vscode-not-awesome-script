@@ -73,7 +73,7 @@
     "@types/vscode": "1.102.0",
     "@typescript-eslint/eslint-plugin": "8.38.0",
     "@typescript-eslint/parser": "8.38.0",
-    "@vscode/vsce": "^3.6.0",
+    "@vscode/vsce": "3.6.0",
     "eslint": "9.32.0",
     "typescript": "5.8.3"
   }
