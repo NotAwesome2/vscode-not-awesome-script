@@ -13,7 +13,7 @@ jobs:
     uses: ./.github/workflows/build.yml
 
   release:
-    uses: SpiralP/github-reusable-workflows/.github/workflows/release.yml@266907f31489c3108fdb1941292d18314c07b4d3 # main
+    uses: SpiralP/github-reusable-workflows/.github/workflows/release.yml@fbc3c33e4802bf188b3dcb78612b6e8b529d8f01 # main
     needs: build
     if: "${{ success() && always() && ! startsWith(github.event.head_commit.message, 'chore(release): ') }}"
     permissions: {} # none, since we use a custom app
