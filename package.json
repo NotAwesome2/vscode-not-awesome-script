@@ -5,7 +5,7 @@
   "description": "ClassiCube (Not Awesome) Script language support",
   "license": "MIT",
   "engines": {
-    "vscode": "^1.103.0"
+    "vscode": "^1.104.0"
   },
   "publisher": "SpiralP",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=SpiralP.classicube-script",
