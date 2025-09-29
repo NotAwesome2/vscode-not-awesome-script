@@ -108,6 +108,9 @@
           "include": "#command-if"
         },
         {
+          "include": "#command-else"
+        },
+        {
           "include": "#command-set"
         },
         {
@@ -120,7 +123,7 @@
     },
     "command-if": {
       "name": "meta.command-if.nas",
-      "begin": "\\b(if|ifnot|else)\\b",
+      "begin": "\\b(if|ifnot)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {
@@ -161,6 +164,21 @@
     "if-condition-operator": {
       "name": "keyword.operator.if-condition-operator.nas",
       "match": "[\\=\\<\\>\\!=\\<=\\>=]"
+    },
+    "command-else": {
+      "name": "meta.command-else.nas",
+      "begin": "\\b(else)\\b",
+      "end": "$",
+      "beginCaptures": {
+        "0": {
+          "name": "keyword.control.command-if.nas"
+        }
+      },
+      "patterns": [
+        { "include": "#command-set" },
+        { "include": "#command-set-with-literal-args" },
+        { "include": "#command-other" }
+      ]
     },
     "command-set": {
       "name": "meta.command-set.nas",
