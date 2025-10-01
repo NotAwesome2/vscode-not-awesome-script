@@ -171,7 +171,7 @@
       "end": "$",
       "beginCaptures": {
         "0": {
-          "name": "keyword.control.command-if.nas"
+          "name": "keyword.control.command-else.nas"
         }
       },
       "patterns": [
