@@ -69,7 +69,7 @@
     "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
-    "@types/node": "22.18.11",
+    "@types/node": "22.18.12",
     "@types/vscode": "1.104.0",
     "@typescript-eslint/eslint-plugin": "8.46.2",
     "@typescript-eslint/parser": "8.46.2",
