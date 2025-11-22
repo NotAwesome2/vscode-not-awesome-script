@@ -5,7 +5,7 @@
   "description": "ClassiCube (Not Awesome) Script language support",
   "license": "MIT",
   "engines": {
-    "vscode": "^1.105.0"
+    "vscode": "^1.106.0"
   },
   "publisher": "SpiralP",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=SpiralP.classicube-script",
@@ -70,7 +70,7 @@
   },
   "devDependencies": {
     "@types/node": "24.10.1",
-    "@types/vscode": "1.105.0",
+    "@types/vscode": "1.106.0",
     "@typescript-eslint/eslint-plugin": "8.46.4",
     "@typescript-eslint/parser": "8.46.4",
     "@vscode/vsce": "3.7.0",
