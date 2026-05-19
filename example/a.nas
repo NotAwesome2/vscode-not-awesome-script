@@ -920,3 +920,23 @@ quit
     show every single package
     msg %e------------------------------------
 quit
+
+#testZone
+    zonechangedevent async register #onZoneChanged
+
+    msg %eCurrent zone: {zone}
+    msg %eCurrent zone motd: {zoneMotd}
+
+    getzonemotd spawn
+    msg %espawn motd: {runArg1}
+
+    setblockmessage {PlayerX} {PlayerY} {PlayerZ} Hello from a message block!
+    placemessageblock {PlayerX} {PlayerY} {PlayerZ} stone Welcome to this zone!
+
+    delay 10000
+    zonechangedevent async unregister #onZoneChanged
+quit
+
+#onZoneChanged
+    msg %eYou entered zone: {runArg1}
+quit
