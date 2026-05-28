@@ -204,7 +204,7 @@
     },
     "command-set-with-literal-args": {
       "name": "meta.command-set-with-literal-args.nas",
-      "begin": "\\b(setadd|setarccos|setarcsin|setarctan|setblockid|setblockmessage|setcos|setdegtorad|setdirvector|setdiv|setfromhexcolor|setmod|setmul|setpow|setradtodeg|setrandrange|setrandrangedecimal|setround|setrounddown|setroundup|setsin|setsqrt|setsub|settan|settohexcolor)\\b",
+      "begin": "\\b(setadd|setarccos|setarcsin|setarctan|setblockid|setblockmessage|setcos|setdegtorad|setdirvector|setdiv|setfromhexcolor|setmod|setmul|setpow|setradtodeg|setrandrange|setrandrangedecimal|setround|setrounddown|setroundup|setsimilarity|setsin|setsqrt|setsub|settan|settohexcolor)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {
