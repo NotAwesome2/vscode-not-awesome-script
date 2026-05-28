@@ -20,7 +20,7 @@ jobs:
       contents: read # for build's checkout
 
   release:
-    uses: SpiralP/github-reusable-workflows/.github/workflows/release.yml@a61620619a54f60607a7e54c330d13db98aa7e6f # main
+    uses: SpiralP/github-reusable-workflows/.github/workflows/release.yml@4aa326f7e29b6ce53306ec3f9d46dfa3bd40776e # main
     needs: build
     concurrency:
       group: release-${{ github.ref }}
