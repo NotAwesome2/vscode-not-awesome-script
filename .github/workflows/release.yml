@@ -9,8 +9,9 @@ permissions: {} # both jobs declare their own
 
 jobs:
   # Release-build smoke test before letting semantic-release push a
-  # chore(release) commit. publish.yml takes over once semantic-release
-  # tags the new version; running the same build here first stops broken
+  # chore(release) commit. build.yml is also dispatched on the release tag
+  # later via `build-workflow`, but at that point a chore(release) commit is
+  # already on main; running the same release build here first stops broken
   # commits from getting that far.
   build:
     uses: ./.github/workflows/build.yml
@@ -31,6 +32,13 @@ jobs:
         package-lock.json
         package.json
       package-name: classicube-script
+      assets: "*.vsix"
+      # Dispatch build.yml on the just-pushed release tag during the publish
+      # phase (before the GH release is created), so the .vsix is packaged
+      # against the bumped commit and attached to the release atomically.
+      # `gh workflow run --ref <tag>` checks out the tagged commit by default,
+      # so no extra inputs are needed on the dispatched workflow.
+      build-workflow: build.yml
     secrets:
       app-client-id: ${{ secrets.APP_CLIENT_ID }}
       app-private-key: ${{ secrets.APP_PRIVATE_KEY }}

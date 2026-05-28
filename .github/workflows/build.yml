@@ -17,6 +17,10 @@ permissions:
 
 jobs:
   linux_nix:
+    # Skip when dispatched from release.yml's publish phase: the smoke
+    # `build` job already validated nix against this commit minutes earlier,
+    # and the nix output isn't attached to the GitHub release.
+    if: ${{ github.event_name != 'workflow_dispatch' }}
     uses: SpiralP/github-reusable-workflows/.github/workflows/build.yml@14f3ff0a30de650ab794eecf41a03f1f9d702822 # main
 
   package:
@@ -30,3 +34,9 @@ jobs:
       - run: npm test
 
       - run: npm run package
+
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: vsix
+          path: "*.vsix"
+          if-no-files-found: error
