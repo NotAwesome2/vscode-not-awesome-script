@@ -117,6 +117,9 @@
           "include": "#command-set-with-literal-args"
         },
         {
+          "include": "#command-placemessageblock"
+        },
+        {
           "include": "#command-other"
         }
       ]
@@ -177,6 +180,7 @@
       "patterns": [
         { "include": "#command-set" },
         { "include": "#command-set-with-literal-args" },
+        { "include": "#command-placemessageblock" },
         { "include": "#command-other" }
       ]
     },
@@ -200,7 +204,7 @@
     },
     "command-set-with-literal-args": {
       "name": "meta.command-set-with-literal-args.nas",
-      "begin": "\\b(setadd|setarccos|setarcsin|setarctan|setblockid|setcos|setdegtorad|setdirvector|setdiv|setfromhexcolor|setmod|setmul|setpow|setradtodeg|setrandrange|setrandrangedecimal|setround|setrounddown|setroundup|setsin|setsqrt|setsub|settan|settohexcolor)\\b",
+      "begin": "\\b(setadd|setarccos|setarcsin|setarctan|setblockid|setblockmessage|setcos|setdegtorad|setdirvector|setdiv|setfromhexcolor|setmod|setmul|setpow|setradtodeg|setrandrange|setrandrangedecimal|setround|setrounddown|setroundup|setsin|setsqrt|setsub|settan|settohexcolor)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {
@@ -216,9 +220,58 @@
         }
       ]
     },
+    "command-placemessageblock": {
+      "name": "meta.command-placemessageblock.nas",
+      "begin": "\\b(placemessageblock)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s*",
+      "end": "$",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.operator.new.command-placemessageblock.nas"
+        },
+        "2": {
+          "patterns": [{ "include": "#arg-value" }]
+        },
+        "3": {
+          "patterns": [{ "include": "#arg-value" }]
+        },
+        "4": {
+          "patterns": [{ "include": "#arg-value" }]
+        },
+        "5": {
+          "patterns": [{ "include": "#arg-value" }]
+        }
+      },
+      "patterns": [
+        {
+          "include": "#string"
+        }
+      ]
+    },
+    "arg-value": {
+      "patterns": [
+        {
+          "include": "#boolean-literal"
+        },
+        {
+          "include": "#numeric-literal"
+        },
+        {
+          "include": "#color-code"
+        },
+        {
+          "include": "#builtin-variable"
+        },
+        {
+          "include": "#variable-value"
+        },
+        {
+          "include": "#variable"
+        }
+      ]
+    },
     "command-other": {
       "name": "keyword.operator.new.command-other.nas",
-      "begin": "\\b(allowmbrepeat|award|boost|changemodel|changeskin|chatevent|clickevent|cmd|cpe|cpemsg|cs|definehotkey|delay|effect|env|error|freeze|getzonemotd|gui|hasplugin|item|kill|localmsg|look|menumsg|motd|msg|placeblock|placemessageblock|reach|reply|replysilent|resetdata|set|setblockmessage|setdeathspawn|setrandlist|setspawn|show|stare|tempblock|tempchunk|undefinehotkey|unfreeze|zonechangedevent async register|zonechangedevent async unregister)\\b",
+      "begin": "\\b(allowmbrepeat|award|boost|changemodel|changeskin|chatevent|clickevent|cmd|cpe|cpemsg|cs|definehotkey|delay|effect|env|error|freeze|getzonemotd|gui|hasplugin|item|kill|localmsg|look|menumsg|motd|msg|placeblock|reach|reply|replysilent|resetdata|set|setdeathspawn|setrandlist|setspawn|show|stare|tempblock|tempchunk|undefinehotkey|unfreeze|zonechangedevent async register|zonechangedevent async unregister)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {

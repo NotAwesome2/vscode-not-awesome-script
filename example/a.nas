@@ -930,8 +930,8 @@ quit
     getzonemotd spawn
     msg %espawn motd: {runArg1}
 
-    setblockmessage {PlayerX} {PlayerY} {PlayerZ} Hello from a message block!
-    placemessageblock {PlayerX} {PlayerY} {PlayerZ} stone Welcome to this zone!
+    setblockmessage scene.message {PlayerX} {PlayerY} {PlayerZ}
+    placemessageblock stone {PlayerX} {PlayerY} {PlayerZ} Welcome to this zone!
 
     delay 10000
     zonechangedevent async unregister #onZoneChanged
