@@ -204,6 +204,231 @@
       "prefix": "terminate",
       "body": "terminate",
       "description": "This tells the script to stop running completely, even if we are in a nested label that was called from somewhere else using \"call\"."
+    },
+    "include": {
+      "prefix": "include",
+      "body": "include ${1:scriptname}",
+      "description": "Similar to C \"#include\". All of the contents of [scriptname] will be copy-pasted into your script when it is compiled. Use os/[mapname] to include from an OS map."
+    },
+    "using": {
+      "prefix": "using",
+      "body": "using ${1|cef,quit_resets_runargs,allow_include,local_packages,no_runarg_underscore_conversion|}",
+      "description": "Top-level option toggle. Write it once somewhere in your script (at the top is standard practice) to activate."
+    },
+    "localmsg": {
+      "prefix": "localmsg",
+      "body": "localmsg ${1|top1,top2,top3,bot1,bot2,bot3,announce,bigannounce,smallannounce,chat|} ${2:message}",
+      "description": "Same as cpemsg, but sends to all players in the level similar to death messages and local chat. Use \"chat\" to send to normal chat."
+    },
+    "menumsg": {
+      "prefix": "menumsg",
+      "body": "menumsg ${1|announce,bigannounce,smallannounce|} ${2:message}",
+      "description": "Same as cpemsg for announcements, but stays on the screen instead of disappearing after 5 seconds."
+    },
+    "cs_me": {
+      "prefix": "cs me",
+      "body": "cs me ${1:chatsound}",
+      "description": "Plays a chatsound for this player, as if coming from self. The player must have chatsounds plugin v3.13 or newer."
+    },
+    "cs_pos": {
+      "prefix": "cs pos",
+      "body": "cs pos ${1:X} ${2:Y} ${3:Z} ${4:chatsound}",
+      "description": "Plays a chatsound for this player, as if coming from the given coordinates."
+    },
+    "cs_bot": {
+      "prefix": "cs bot",
+      "body": "cs bot ${1:botName} ${2:chatsound}",
+      "description": "Plays a chatsound for this player, as if coming from the given bot or tempbot."
+    },
+    "setpow": {
+      "prefix": "setpow",
+      "body": "setpow ${1:package} ${2:number or package}",
+      "description": "Performs a math \"power of\" operation on [package] and sets that as its new value."
+    },
+    "setsin": {
+      "prefix": "setsin",
+      "body": "setsin ${1:package} ${2:number or package}",
+      "description": "Calculates sine of [number or package] and inserts it into [package]."
+    },
+    "setcos": {
+      "prefix": "setcos",
+      "body": "setcos ${1:package} ${2:number or package}",
+      "description": "Calculates cosine of [number or package] and inserts it into [package]."
+    },
+    "settan": {
+      "prefix": "settan",
+      "body": "settan ${1:package} ${2:number or package}",
+      "description": "Calculates the tangent of [number or package] (radians) and inserts it into [package]."
+    },
+    "setarcsin": {
+      "prefix": "setarcsin",
+      "body": "setarcsin ${1:package} ${2:number or package}",
+      "description": "Calculates the angle (in radians) whose sine is equal to [number or package]."
+    },
+    "setarccos": {
+      "prefix": "setarccos",
+      "body": "setarccos ${1:package} ${2:number or package}",
+      "description": "Calculates the angle (in radians) whose cosine is equal to [number or package]."
+    },
+    "setarctan": {
+      "prefix": "setarctan",
+      "body": "setarctan ${1:package} ${2:number or package}",
+      "description": "Calculates the angle (in radians) whose tangent is equal to [number or package]."
+    },
+    "setradtodeg": {
+      "prefix": "setradtodeg",
+      "body": "setradtodeg ${1:package} ${2:number or package}",
+      "description": "Converts [number or package] from radians into degrees."
+    },
+    "setdegtorad": {
+      "prefix": "setdegtorad",
+      "body": "setdegtorad ${1:package} ${2:number or package}",
+      "description": "Converts [number or package] from degrees into radians."
+    },
+    "setsqrt": {
+      "prefix": "setsqrt",
+      "body": "setsqrt ${1:package} ${2:number or package}",
+      "description": "Calculates the square root of [number or package] and inserts it into [package]."
+    },
+    "setfromhexcolor": {
+      "prefix": "setfromhexcolor",
+      "body": "setfromhexcolor ${1:package} ${2:hexColor}",
+      "description": "Converts [hexColor] into integer red, green, and blue components in [package][0..2]."
+    },
+    "settohexcolor": {
+      "prefix": "settohexcolor",
+      "body": "settohexcolor ${1:package} ${2:colorStructure}",
+      "description": "Calculates the hex code based on the given [colorStructure] (three packages with [0..2] indices) and inserts it into [package]."
+    },
+    "setlength": {
+      "prefix": "setlength",
+      "body": "setlength ${1:package} ${2:splitter}",
+      "description": "Like setsplit, but just inserts the resulting length into [package].Length."
+    },
+    "setsplit": {
+      "prefix": "setsplit",
+      "body": "setsplit ${1:package} ${2:splitter}",
+      "description": "Copies the contents of [package], then splits them up into a new set of indexed packages."
+    },
+    "setsimilarity": {
+      "prefix": "setsimilarity",
+      "body": "setsimilarity ${1:package} ${2:phrase A} ${3:phrase B}",
+      "description": "Calculates the similarity of [phrase A] and [phrase B] (0 to 1) and inserts the result into [package]. Phrases can be packages or quote-enclosed literals."
+    },
+    "setdirvector": {
+      "prefix": "setdirvector",
+      "body": "setdirvector ${1:xPackage} ${2:yPackage} ${3:zPackage} ${4:yaw} ${5:pitch}",
+      "description": "Sets the value of x, y, and z packages to a 3D direction vector based on yaw and pitch in degrees."
+    },
+    "setblockmessage": {
+      "prefix": "setblockmessage",
+      "body": "setblockmessage ${1:package} ${2:X} ${3:Y} ${4:Z}",
+      "description": "Sets the value of [package] to the message of the message block at the given coordinates (or nothing if no message exists)."
+    },
+    "getzonemotd": {
+      "prefix": "getzonemotd",
+      "body": "getzonemotd ${1:package} ${2:zone name}",
+      "description": "Sets the value of [package] to the MOTD of the named zone. Leaving the second argument empty gives the MOTD of the level instead."
+    },
+    "setdeathspawn": {
+      "prefix": "setdeathspawn",
+      "body": "setdeathspawn ${1:X} ${2:Y} ${3:Z}",
+      "description": "Changes where the player will spawn after dying."
+    },
+    "allowmbrepeat": {
+      "prefix": "allowmbrepeat",
+      "body": "allowmbrepeat",
+      "description": "Allows the next walk-through MB to be triggered, even if it's the same as the previously touched MB."
+    },
+    "definehotkey": {
+      "prefix": "definehotkey",
+      "body": "definehotkey ${1:input args}|${2:key name}|${3:modifiers}",
+      "description": "Allows the player to run the #input label by pressing a key. Modifiers can be any combination of ctrl, shift, alt, async."
+    },
+    "undefinehotkey": {
+      "prefix": "undefinehotkey",
+      "body": "undefinehotkey ${1:key name}|${2:modifiers}",
+      "description": "Removes a previously defined hotkey. Matching modifiers must be included."
+    },
+    "placeblock": {
+      "prefix": "placeblock",
+      "body": "placeblock ${1:block} ${2:X} ${3:Y} ${4:Z}",
+      "description": "Places blocks in the map. Unlike tempblock, these are permanently placed just like editing the map for real."
+    },
+    "placemessageblock": {
+      "prefix": "placemessageblock",
+      "body": "placemessageblock ${1:block} ${2:X} ${3:Y} ${4:Z} ${5:message}",
+      "description": "Places message blocks in the map. If no message is provided, places a normal block and removes the message at the coordinates."
+    },
+    "changemodel": {
+      "prefix": "changemodel",
+      "body": "changemodel ${1:model}",
+      "description": "Temporarily changes the player's model for the current world. Only works if the MOTD has one or more models forced with model=…. Run with no arguments to reset."
+    },
+    "changeskin": {
+      "prefix": "changeskin",
+      "body": "changeskin ${1:skin}",
+      "description": "Temporarily changes the player's skin for the current world. Other players see it as well. Run with no arguments to reset."
+    },
+    "award": {
+      "prefix": "award",
+      "body": "award ${1:award}",
+      "description": "Gives the player [award]."
+    },
+    "gui": {
+      "prefix": "gui",
+      "body": "gui ${1|crosshair,hand,hotbar,barSize,barColor,reset|} ${2:value}",
+      "description": "Change properties of the player's gui to achieve cinematic effects. Use \"gui reset\" to restore defaults."
+    },
+    "hasplugin": {
+      "prefix": "hasplugin",
+      "body": "hasplugin ${1:package}|${2:plugin name}|${3:version}",
+      "description": "Checks if the player has [plugin name] and gives [package] a value of true if they have it, otherwise false. <version> is optional."
+    },
+    "clickevent_register": {
+      "prefix": "clickevent register",
+      "body": "clickevent ${1|async,sync|} register #${2:label}",
+      "description": "Registers a label that will be called whenever the player clicks. Only works when map buildable and deletable are OFF."
+    },
+    "clickevent_unregister": {
+      "prefix": "clickevent unregister",
+      "body": "clickevent ${1|async,sync|} unregister",
+      "description": "Unregisters the previously registered click event label."
+    },
+    "chatevent_register": {
+      "prefix": "chatevent register",
+      "body": "chatevent sync register #${1:cancelLogic} #${2:onChat} ${3:phrase}",
+      "description": "Registers two labels that will be called whenever the player chats. Not allowed in os scripts."
+    },
+    "chatevent_unregister": {
+      "prefix": "chatevent unregister",
+      "body": "chatevent sync unregister",
+      "description": "Unregisters the previously registered chat event."
+    },
+    "zonechangedevent_register": {
+      "prefix": "zonechangedevent register",
+      "body": "zonechangedevent async register #${1:label}",
+      "description": "Registers a label that will be called whenever the player changes zones. runArg1 will be the name of the newly entered zone."
+    },
+    "zonechangedevent_unregister": {
+      "prefix": "zonechangedevent unregister",
+      "body": "zonechangedevent async unregister",
+      "description": "Unregisters the previously registered zonechangedevent label."
+    },
+    "error": {
+      "prefix": "error",
+      "body": "error ${1:message}",
+      "description": "Force the script to error with [message] as the reason. Also terminates the script. Useful when data or args haven't been setup correctly."
+    },
+    "boost": {
+      "prefix": "boost",
+      "body": "boost ${1:args}",
+      "description": "Shortcut for \"cmd boost [args]\". See /help boost for more info. Has faster performance than calling via cmd."
+    },
+    "effect": {
+      "prefix": "effect",
+      "body": "effect ${1:args}",
+      "description": "Shortcut for \"cmd effect [args]\". See /help effect for more info. Has faster performance than calling via cmd."
     }
   }
 }

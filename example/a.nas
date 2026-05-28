@@ -978,3 +978,93 @@ quit
     setsimilarity sim runArg1 "secret password"
     msg %eMatch to "secret password": {sim}
 quit
+
+#testMessaging
+    localmsg announce Welcome to the level!
+    menumsg bigannounce Persistent title
+    cs me ohno
+    cs pos {PlayerX} {PlayerY} {PlayerZ} explosion
+    cs bot myBot fanfare
+quit
+
+#testMath
+    set theta 0.5
+    setpow cube 3
+    setsin sinVal theta
+    setcos cosVal theta
+    settan tanVal theta
+    setarcsin asinVal 0.5
+    setarccos acosVal 0.5
+    setarctan atanVal 1
+    setradtodeg degVal 3.14159
+    setdegtorad radVal 180
+    setsqrt rootVal 16
+quit
+
+#testHexColor
+    setfromhexcolor myColor FF00FF
+    msg %eR={myColor[0]} G={myColor[1]} B={myColor[2]}
+    settohexcolor hexCode myColor
+    msg %ehexCode: {hexCode}
+quit
+
+#testDirVector
+    setdirvector dx dy dz PlayerYaw PlayerPitch
+    msg %edir: {dx} {dy} {dz}
+quit
+
+#testLength
+    set sentence Good morning everyone
+    setlength sentenceLen " "
+    msg %eWord count: {sentenceLen.Length}
+quit
+
+#testEvents
+    clickevent async register #onClickDemo
+    chatevent sync register #cancelHello #onHello hello|hi
+    delay 5000
+    chatevent sync unregister
+    clickevent async unregister
+quit
+
+#cancelHello
+quit
+
+#onHello
+    msg %eYou said hello!
+quit
+
+#onClickDemo
+    msg %eClick recorded.
+quit
+
+#testPlugins
+    hasplugin hasCs|cs|3.13
+    if hasCs msg %eYou have chatsounds 3.13+.
+    ifnot hasCs msg %eMissing chatsounds.
+quit
+
+#testBlocks
+    allowmbrepeat
+    placeblock stone {PlayerX} {PlayerY} {PlayerZ}
+quit
+
+#testPlayerOps
+    changeskin SpiralP
+    award FirstAward
+    setdeathspawn {PlayerX} {PlayerY} {PlayerZ}
+    gui crosshair false
+    gui barSize 0.2
+    gui reset
+quit
+
+#testHotkeys
+    definehotkey jumpBoost|SPACE|async shift
+    delay 5000
+    undefinehotkey SPACE|async shift
+quit
+
+#testEffectError
+    effect explosion {PlayerX} {PlayerY} {PlayerZ}
+    error This is a forced error for testing.
+quit
