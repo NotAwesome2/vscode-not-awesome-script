@@ -948,3 +948,33 @@ quit
     if label #onZoneChanged msg %e#onZoneChanged is defined.
     ifnot label #missingLabel msg %e#missingLabel is not defined.
 quit
+
+#testPlayerPresets
+    msg %eYou are holding block id {PlayerHeldBlock}.
+    msg %eYour pronouns are: {PlayerPronouns}.
+quit
+
+#testClickPackages
+    clickevent async register #onClick
+    msg %eClick anywhere within 10 seconds.
+    delay 10000
+    clickevent async unregister
+quit
+
+#onClick
+    msg %eClicked button: {click.button}
+    msg %eClick coords: {click.coords}
+    msg %eClick X/Y/Z: {click.coordsX} {click.coordsY} {click.coordsZ}
+    msg %eClick yaw/pitch: {click.yaw} {click.pitch}
+    msg %eClick face: {click.face}
+quit
+
+#testSetSimilarity
+    set phraseA hello world
+    set phraseB hello there
+    setsimilarity sim phraseA phraseB
+    msg %eSimilarity between phrases: {sim}
+
+    setsimilarity sim runArg1 "secret password"
+    msg %eMatch to "secret password": {sim}
+quit
