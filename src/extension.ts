@@ -7,7 +7,7 @@ import * as vscode from "vscode";
 export function activate(context: vscode.ExtensionContext) {
   const variableRegex = new RegExp(/([a-zA-Z0-9_\-\.]+)/g);
   const variableAssignRegex = new RegExp(
-    /^(\s*)((?:set|setsplit|setadd|setblockid|setblockmessage|setdirvector|setdiv|setmod|setmul|setrandrange|setrandrangedecimal|setround|setrounddown|setroundup|setsub)\s+)([a-zA-Z0-9_\-\.]+)/
+    /^(\s*)((?:getzonemotd|set|setadd|setarccos|setarcsin|setarctan|setblockid|setblockmessage|setcos|setdegtorad|setdirvector|setdiv|setfromhexcolor|setlength|setmod|setmul|setpow|setradtodeg|setrandlist|setrandrange|setrandrangedecimal|setround|setrounddown|setroundup|setsimilarity|setsin|setsplit|setsqrt|setsub|settan|settohexcolor)\s+)([a-zA-Z0-9_\-\.]+)/
   );
 
   const functionLabelRegex = new RegExp(/(#[a-zA-Z0-9_\-\.]+)/g);
