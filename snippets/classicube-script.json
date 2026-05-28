@@ -7,7 +7,7 @@
     },
     "cpemsg": {
       "prefix": "cpemsg",
-      "body": "cpemsg ${1|top1,top2,top3,bot1,bot2,bot3,announce|} ${2:message}",
+      "body": "cpemsg ${1|top1,top2,top3,bot1,bot2,bot3,announce,bigannounce,smallannounce|} ${2:message}",
       "description": "Same as msg, but allows you to send to the other special chat fields in top right, bottom right, or center."
     },
     "kill": {
@@ -132,7 +132,7 @@
     },
     "resetdata": {
       "prefix": "resetdata",
-      "body": "resetdata ${1|packages,items,saved|} ${2:search pattern}",
+      "body": "resetdata ${1|packages,items,saved,locals|} ${2:search pattern}",
       "description": "Used to reset data."
     },
     "freeze": {
