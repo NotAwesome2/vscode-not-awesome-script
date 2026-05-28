@@ -1,0 +1,36 @@
+name: release
+
+on:
+  push:
+    branches: [main, master, alpha, beta]
+  workflow_dispatch:
+
+permissions: {} # both jobs declare their own
+
+jobs:
+  # Release-build smoke test before letting semantic-release push a
+  # chore(release) commit. publish.yml takes over once semantic-release
+  # tags the new version; running the same build here first stops broken
+  # commits from getting that far.
+  build:
+    uses: ./.github/workflows/build.yml
+    if: "${{ ! startsWith(github.event.head_commit.message, 'chore(release): ') }}"
+    permissions:
+      contents: read # for build's checkout
+
+  release:
+    uses: SpiralP/github-reusable-workflows/.github/workflows/release.yml@14f3ff0a30de650ab794eecf41a03f1f9d702822 # main
+    needs: build
+    concurrency:
+      group: release-${{ github.ref }}
+      cancel-in-progress: false # do not cancel in-progress jobs
+    permissions: {} # none needed, uses a custom GitHub App token
+    with:
+      environment-name: release
+      replace-files: |
+        package-lock.json
+        package.json
+      package-name: classicube-script
+    secrets:
+      app-client-id: ${{ secrets.APP_CLIENT_ID }}
+      app-private-key: ${{ secrets.APP_PRIVATE_KEY }}

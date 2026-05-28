@@ -2,17 +2,25 @@ name: build
 
 on:
   pull_request:
-    branches: [main, master]
+    branches: [main, master, alpha, beta]
   push:
-    branches-ignore: [main, master]
+    branches-ignore: [main, master, alpha, beta]
   workflow_call:
   workflow_dispatch:
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read # for checkout
 
 jobs:
-  build:
+  linux_nix:
+    uses: SpiralP/github-reusable-workflows/.github/workflows/build.yml@14f3ff0a30de650ab794eecf41a03f1f9d702822 # main
+
+  package:
+    name: Package VSIX
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
