@@ -417,7 +417,7 @@
     },
     "builtin-variable": {
       "name": "support.type.builtin.nas",
-      "match": "\\b(cef|MBX|MBY|MBZ|PlayerX|PlayerY|PlayerZ|PlayerPX|PlayerPY|PlayerPZ|PlayerYaw|PlayerPitch|msgDelay|msgDelayMultiplier|MBCoords|PlayerCoords|PlayerCoordsDecimal|PlayerCoordsPrecise|runArg0|runArg1|runArg2|runArg3|runArg4|runArg5|runArg6|runArg7|runArg8|runArg9|epochMS|actionCount|actionLimit|PlayerClient|webclient|mobile|LevelName|LevelX|LevelY|LevelZ|PI|zone|zoneMotd)\\b"
+      "match": "\\b(cef|MBX|MBY|MBZ|PlayerX|PlayerY|PlayerZ|PlayerPX|PlayerPY|PlayerPZ|PlayerYaw|PlayerPitch|PlayerHeldBlock|PlayerPronouns|msgDelay|msgDelayMultiplier|MBCoords|PlayerCoords|PlayerCoordsDecimal|PlayerCoordsPrecise|runArg0|runArg1|runArg2|runArg3|runArg4|runArg5|runArg6|runArg7|runArg8|runArg9|epochMS|actionCount|actionLimit|PlayerClient|webclient|mobile|LevelName|LevelX|LevelY|LevelZ|PI|zone|zoneMotd)\\b"
     },
     "string-builtin-variable": {
       "name": "support.type.builtin.string-builtin-variable.nas",
