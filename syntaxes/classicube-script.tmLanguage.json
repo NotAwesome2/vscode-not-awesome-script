@@ -135,10 +135,47 @@
       },
       "patterns": [
         {
+          "include": "#if-item"
+        },
+        {
+          "include": "#if-label"
+        },
+        {
           "include": "#if-condition"
         },
         {
           "include": "#expression"
+        }
+      ]
+    },
+    "if-item": {
+      "name": "meta.if-item.nas",
+      "begin": "\\s+(item)\\s+",
+      "end": "\\s+",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.if-item.nas"
+        }
+      },
+      "patterns": [
+        {
+          "name": "constant.other.item.nas",
+          "match": "\\S+"
+        }
+      ]
+    },
+    "if-label": {
+      "name": "meta.if-label.nas",
+      "begin": "\\s+(label)\\s+",
+      "end": "\\s+",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.if-label.nas"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#function-label"
         }
       ]
     },

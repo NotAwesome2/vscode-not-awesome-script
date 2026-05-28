@@ -940,3 +940,11 @@ quit
 #onZoneChanged
     msg %eYou entered zone: {runArg1}
 quit
+
+#testIfForms
+    if item SWORD msg %eYou have a sword.
+    ifnot item SWORD msg %eYou need a sword.
+
+    if label #onZoneChanged msg %e#onZoneChanged is defined.
+    ifnot label #missingLabel msg %e#missingLabel is not defined.
+quit
