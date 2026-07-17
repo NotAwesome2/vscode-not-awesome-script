@@ -228,10 +228,9 @@
         }
       },
       "patterns": [
-        { "include": "#command-set" },
-        { "include": "#command-set-with-literal-args" },
-        { "include": "#command-placemessageblock" },
-        { "include": "#command-other" }
+        {
+          "include": "#expression"
+        }
       ]
     },
     "command-set": {

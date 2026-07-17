@@ -1086,3 +1086,7 @@ if runArg1|=|"some string" msg You compared to a literal
 if myGemCount|<|1.6 msg Too small
 if myGemCount|>=|bowGemPrice msg Enough gems
 if myDialogue|has|"wow" msg Contains wow
+
+
+if map.name|=|"ring1" call #TowerEnter|LoBBY
+else call #TowerEnter|{map.name}-lobby
