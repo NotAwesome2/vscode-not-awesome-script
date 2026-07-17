@@ -74,7 +74,7 @@
     "@typescript-eslint/eslint-plugin": "8.63.0",
     "@typescript-eslint/parser": "8.63.0",
     "@vscode/vsce": "3.9.2",
-    "eslint": "9.39.5",
-    "typescript": "5.9.3"
+    "eslint": "10.7.0",
+    "typescript": "7.0.2"
   }
 }
