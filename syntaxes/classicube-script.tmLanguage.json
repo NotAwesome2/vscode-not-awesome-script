@@ -95,10 +95,17 @@
       "end": "$",
       "patterns": [
         {
-          "include": "#value-expression"
+          "include": "#variable-value"
         },
         {
-          "include": "#variable-name"
+          "include": "#color-code"
+        },
+        {
+          "include": "#string-builtin-variable"
+        },
+        {
+          "name": "string.unquoted.nas",
+          "match": "[^|{}]+"
         }
       ]
     },
@@ -184,10 +191,16 @@
       "end": "\\s+",
       "patterns": [
         {
+          "include": "#numeric-literal"
+        },
+        {
           "include": "#variable"
         },
         {
           "include": "#if-condition-operator-args"
+        },
+        {
+          "include": "#quoted-string"
         }
       ]
     },
@@ -347,6 +360,11 @@
         }
       ]
     },
+    "quoted-string": {
+      "name": "string.quoted.double.nas",
+      "begin": "\"",
+      "end": "\""
+    },
     "value-expression": {
       "patterns": [
         {
@@ -455,7 +473,7 @@
     },
     "numeric-literal": {
       "name": "constant.numeric.nas",
-      "match": "\\b[0-9]+\\b"
+      "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
     },
     "boolean-literal": {
       "name": "constant.language.nas",

@@ -1068,3 +1068,21 @@ quit
     effect explosion {PlayerX} {PlayerY} {PlayerZ}
     error This is a forced error for testing.
 quit
+
+// [set-decimal-fixture]
+setmul myVar 1.6
+setsub myVar 2.25
+setdiv myVar 0.5
+set myVar 3.14
+setrandrangedecimal r 0.1 0.9
+
+// [call-args-fixture]
+#CallArgsFixture
+call #OtherLabel|plainArg|{runArg1}|text {runArg2} more
+quit
+
+// [if-operand-fixture]
+if runArg1|=|"some string" msg You compared to a literal
+if myGemCount|<|1.6 msg Too small
+if myGemCount|>=|bowGemPrice msg Enough gems
+if myDialogue|has|"wow" msg Contains wow
