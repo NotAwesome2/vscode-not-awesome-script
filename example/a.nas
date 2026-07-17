@@ -1087,6 +1087,11 @@ if myGemCount|<|1.6 msg Too small
 if myGemCount|>=|bowGemPrice msg Enough gems
 if myDialogue|has|"wow" msg Contains wow
 
+#TowerEnter
 
 if map.name|=|"ring1" call #TowerEnter|LoBBY
 else call #TowerEnter|{map.name}-lobby
+
+#thing.lobby.sign
+
+if label #{tower_name}.lobby.sign call #{tower_name}.lobby.sign

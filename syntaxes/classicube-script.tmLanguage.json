@@ -413,7 +413,22 @@
     },
     "function-label": {
       "name": "entity.name.function.nas",
-      "match": "#[a-zA-Z0-9_\\-\\.]+"
+      "begin": "#(?=[a-zA-Z0-9_\\-\\.{])",
+      "end": "(?=\\s|$|\\|)",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.label.nas"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#variable-value"
+        },
+        {
+          "name": "entity.name.function.package.nas",
+          "match": "[a-zA-Z0-9_\\-\\.]+"
+        }
+      ]
     },
     "variable-index": {
       "name": "keyword.operator.new.variable-index.nas",
