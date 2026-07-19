@@ -362,7 +362,12 @@
     "quoted-string": {
       "name": "string.quoted.double.nas",
       "begin": "\"",
-      "end": "\""
+      "end": "\"",
+      "patterns": [
+        {
+          "include": "#value-expression"
+        }
+      ]
     },
     "value-expression": {
       "patterns": [

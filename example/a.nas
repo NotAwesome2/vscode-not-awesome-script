@@ -1095,3 +1095,8 @@ else call #TowerEnter|{map.name}-lobby
 #thing.lobby.sign
 
 if label #{tower_name}.lobby.sign call #{tower_name}.lobby.sign
+
+// [if-quoted-interpolation-fixture]
+if test|=|"{test2}" msg test3
+if runArg1|=|"hello {runArg2}" msg greeting
+if myDialogue|has|"{wow}" msg Contains wow
