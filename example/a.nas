@@ -1100,3 +1100,11 @@ if label #{tower_name}.lobby.sign call #{tower_name}.lobby.sign
 if test|=|"{test2}" msg test3
 if runArg1|=|"hello {runArg2}" msg greeting
 if myDialogue|has|"{wow}" msg Contains wow
+
+// --- placemessageblock rendering fixture ---
+// Each of these should show "placemessageblock" highlighted immediately,
+// not only once all four args are typed.
+placemessageblock
+placemessageblock stone
+placemessageblock stone 1 2 3
+placemessageblock stone 1 2 3 this is a message block

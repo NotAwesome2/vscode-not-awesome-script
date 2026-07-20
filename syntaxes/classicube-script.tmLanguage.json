@@ -271,7 +271,7 @@
     },
     "command-placemessageblock": {
       "name": "meta.command-placemessageblock.nas",
-      "begin": "\\b(placemessageblock)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s*",
+      "begin": "\\b(placemessageblock)(?:\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+))?\\s*",
       "end": "$",
       "beginCaptures": {
         "1": {
