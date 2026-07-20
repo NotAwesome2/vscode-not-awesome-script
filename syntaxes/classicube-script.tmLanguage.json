@@ -492,7 +492,7 @@
     },
     "numeric-literal": {
       "name": "constant.numeric.nas",
-      "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+      "match": "(?<!\\w)-?[0-9]+(\\.[0-9]+)?\\b"
     },
     "boolean-literal": {
       "name": "constant.language.nas",

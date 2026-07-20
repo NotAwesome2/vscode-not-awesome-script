@@ -1108,3 +1108,14 @@ placemessageblock
 placemessageblock stone
 placemessageblock stone 1 2 3
 placemessageblock stone 1 2 3 this is a message block
+
+// Negative-number highlighting fixture (do not remove — used for manual token inspection)
+#_NegFixture
+    set setnegtest 0
+    setadd setnegtest -5
+    setsub setnegtest -3.14
+    setmul setnegtest -2
+    setrandrange setnegtest -10 -1
+    set myArr[-3] 1
+    if setnegtest|<|-1 quit
+    quit
