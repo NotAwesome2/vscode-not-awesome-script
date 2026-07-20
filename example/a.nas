@@ -1106,8 +1106,17 @@ if myDialogue|has|"{wow}" msg Contains wow
 // not only once all four args are typed.
 placemessageblock
 placemessageblock stone
+placemessageblock stone 1
+placemessageblock stone 1 this is a message block
+placemessageblock stone 1 2
+placemessageblock stone 1 2 this is a message block
 placemessageblock stone 1 2 3
 placemessageblock stone 1 2 3 this is a message block
+placemessageblock air 1 {COORDS} this is a message block with the COORDS variable containing 2 numbers for Y/Z
+placemessageblock air 1 2 {Z} this is a message block with Z var containing the Z number
+placemessageblock air {COORDS} this is a message block with the COORDS variable containing all 3 numbers for X/Y/Z
+placemessageblock air {X} {COORDS} this is a message block with the COORDS variable containing 2 numbers for Y/Z
+placemessageblock air {X} {Y} {Z} this is a message block with separate X/Y/Z coord vars
 
 // Negative-number highlighting fixture (do not remove — used for manual token inspection)
 #_NegFixture

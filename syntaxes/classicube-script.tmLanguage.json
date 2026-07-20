@@ -271,54 +271,35 @@
     },
     "command-placemessageblock": {
       "name": "meta.command-placemessageblock.nas",
-      "begin": "\\b(placemessageblock)(?:\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+))?\\s*",
+      "begin": "\\b(placemessageblock)(?:\\s+(\\S+))?\\s*",
       "end": "$",
       "beginCaptures": {
         "1": {
           "name": "keyword.operator.new.command-placemessageblock.nas"
         },
         "2": {
-          "patterns": [{ "include": "#arg-value" }]
-        },
-        "3": {
-          "patterns": [{ "include": "#arg-value" }]
-        },
-        "4": {
-          "patterns": [{ "include": "#arg-value" }]
-        },
-        "5": {
-          "patterns": [{ "include": "#arg-value" }]
+          "patterns": [{ "include": "#command-placemessageblock-arg" }]
         }
       },
       "patterns": [
+        { "include": "#command-placemessageblock-coord" },
+        { "match": "\\s+", "name": "meta.command-placemessageblock.nas" },
+        { "include": "#string" }
+      ]
+    },
+    "command-placemessageblock-arg": {
+      "patterns": [
+        { "include": "#variable-value" },
         {
-          "include": "#string"
+          "name": "entity.name.function.package.nas",
+          "match": "\\S+"
         }
       ]
     },
-    "arg-value": {
+    "command-placemessageblock-coord": {
       "patterns": [
-        {
-          "include": "#boolean-literal"
-        },
-        {
-          "include": "#numeric-literal"
-        },
-        {
-          "include": "#color-code"
-        },
-        {
-          "include": "#click-builtin-variable"
-        },
-        {
-          "include": "#builtin-variable"
-        },
-        {
-          "include": "#variable-value"
-        },
-        {
-          "include": "#variable"
-        }
+        { "include": "#numeric-literal" },
+        { "include": "#variable-value" }
       ]
     },
     "command-other": {
