@@ -127,6 +127,9 @@
           "include": "#command-placemessageblock"
         },
         {
+          "include": "#command-message"
+        },
+        {
           "include": "#command-other"
         }
       ]
@@ -247,7 +250,7 @@
           "include": "#set-variable"
         },
         {
-          "include": "#string"
+          "include": "#message-string"
         }
       ]
     },
@@ -284,7 +287,7 @@
       "patterns": [
         { "include": "#command-placemessageblock-coord" },
         { "match": "\\s+", "name": "meta.command-placemessageblock.nas" },
-        { "include": "#string" }
+        { "include": "#message-string" }
       ]
     },
     "command-placemessageblock-arg": {
@@ -302,9 +305,44 @@
         { "include": "#variable-value" }
       ]
     },
+    "command-message": {
+      "name": "keyword.operator.new.command-message.nas",
+      "begin": "\\b(msg|motd|cpemsg|localmsg|menumsg|reply|replysilent)\\b",
+      "end": "$",
+      "beginCaptures": {
+        "0": {
+          "name": "keyword.operator.new.command-message.nas"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#message-string"
+        }
+      ]
+    },
+    "message-string": {
+      "name": "meta.message.nas",
+      "begin": "",
+      "end": "$",
+      "patterns": [
+        {
+          "include": "#variable-value"
+        },
+        {
+          "include": "#color-code"
+        },
+        {
+          "include": "#string-builtin-variable"
+        },
+        {
+          "name": "string.string.nas",
+          "match": "[^{}@%&]+"
+        }
+      ]
+    },
     "command-other": {
       "name": "keyword.operator.new.command-other.nas",
-      "begin": "\\b(allowmbrepeat|award|boost|changemodel|changeskin|chatevent|clickevent|cmd|cpe|cpemsg|cs|definehotkey|delay|effect|env|error|freeze|getzonemotd|gui|hasplugin|item|kill|localmsg|look|menumsg|motd|msg|placeblock|reach|reply|replysilent|resetdata|setdeathspawn|setrandlist|setspawn|show|stare|tempblock|tempchunk|undefinehotkey|unfreeze|zonechangedevent async register|zonechangedevent async unregister)\\b",
+      "begin": "\\b(allowmbrepeat|award|boost|changemodel|changeskin|chatevent|clickevent|cmd|cpe|cs|definehotkey|delay|effect|env|error|freeze|getzonemotd|gui|hasplugin|item|kill|look|placeblock|reach|resetdata|setdeathspawn|setrandlist|setspawn|show|stare|tempblock|tempchunk|undefinehotkey|unfreeze|zonechangedevent async register|zonechangedevent async unregister)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {
@@ -313,7 +351,7 @@
       },
       "patterns": [
         {
-          "include": "#string"
+          "include": "#value-expression-unwrapped"
         }
       ]
     },
@@ -327,16 +365,6 @@
         },
         {
           "include": "#variable-value"
-        }
-      ]
-    },
-    "string": {
-      "name": "string.string.nas",
-      "begin": "",
-      "end": "$",
-      "patterns": [
-        {
-          "include": "#value-expression"
         }
       ]
     },
