@@ -281,28 +281,14 @@
           "name": "keyword.operator.new.command-placemessageblock.nas"
         },
         "2": {
-          "patterns": [{ "include": "#command-placemessageblock-arg" }]
+          "patterns": [{ "include": "#variable-value" }]
         }
       },
       "patterns": [
-        { "include": "#command-placemessageblock-coord" },
+        { "include": "#numeric-literal" },
+        { "include": "#variable-value" },
         { "match": "\\s+", "name": "meta.command-placemessageblock.nas" },
         { "include": "#message-string" }
-      ]
-    },
-    "command-placemessageblock-arg": {
-      "patterns": [
-        { "include": "#variable-value" },
-        {
-          "name": "entity.name.function.package.nas",
-          "match": "\\S+"
-        }
-      ]
-    },
-    "command-placemessageblock-coord": {
-      "patterns": [
-        { "include": "#numeric-literal" },
-        { "include": "#variable-value" }
       ]
     },
     "command-message": {
