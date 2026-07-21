@@ -75,6 +75,6 @@
     "@typescript-eslint/parser": "8.63.0",
     "@vscode/vsce": "3.9.2",
     "eslint": "10.7.0",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   }
 }
