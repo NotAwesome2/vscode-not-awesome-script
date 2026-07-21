@@ -1128,3 +1128,8 @@ placemessageblock air {X} {Y} {Z} this is a message block with separate X/Y/Z co
     set myArr[-3] 1
     if setnegtest|<|-1 quit
     quit
+
+// resetdata star
+resetdata packages username.display[*
+set var false
+

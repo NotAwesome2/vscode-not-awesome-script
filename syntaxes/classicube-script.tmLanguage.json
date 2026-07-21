@@ -446,7 +446,7 @@
     "variable-index": {
       "name": "keyword.operator.new.variable-index.nas",
       "begin": "\\[",
-      "end": "\\]",
+      "end": "(?:\\]|$)",
       "patterns": [
         {
           "include": "#numeric-literal"
@@ -474,7 +474,7 @@
     "variable-value": {
       "name": "keyword.operator.new.variable-value.nas",
       "begin": "{",
-      "end": "}",
+      "end": "(?:\\}|$)",
       "patterns": [
         {
           "include": "#click-builtin-variable"
