@@ -1133,3 +1133,11 @@ placemessageblock air {X} {Y} {Z} this is a message block with separate X/Y/Z co
 resetdata packages username.display[*
 set var false
 
+if click.button|=|"left" msg Left click
+if click.coords|=|"123" msg Left click
+if runArg2|=|"" jump #label
+if other|=|"" jump #label
+set var {{runArg1}}
+set var {runArg1}
+set var "runArg1"
+

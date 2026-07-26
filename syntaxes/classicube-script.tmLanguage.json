@@ -197,6 +197,12 @@
           "include": "#variable-value"
         },
         {
+          "include": "#click-builtin-variable"
+        },
+        {
+          "include": "#builtin-variable"
+        },
+        {
           "include": "#variable"
         },
         {
