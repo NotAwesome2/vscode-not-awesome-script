@@ -1141,3 +1141,21 @@ set var {{runArg1}}
 set var {runArg1}
 set var "runArg1"
 
+// --- reply/replysilent pipe-separated argument fixture ---
+// Each pipe between the three segments should highlight distinctly,
+// and the final #label should highlight as entity.name.function.
+reply 1|You: Sure thing.|#replyYes
+reply 2|You: No thanks.|#replyNo
+reply 3|You: Can you elaborate?|#replyElaborate
+replysilent 1|Whisper option one|#silentReply1
+replysilent 2|Whisper option two|#silentReply2
+// clear variants
+reply clear
+replysilent clear
+// with variable interpolation in message text
+reply 1|Hello {PlayerName}, choose wisely.|#greetingReply
+// with color codes in message text
+reply 1|%eImportant choice|#importantReply
+// with string builtins in message text
+reply 1|Welcome @p!|#welcomeReply
+

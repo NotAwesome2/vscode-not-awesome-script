@@ -124,6 +124,9 @@
           "include": "#command-placemessageblock"
         },
         {
+          "include": "#command-reply"
+        },
+        {
           "include": "#command-message"
         },
         {
@@ -303,7 +306,7 @@
     },
     "command-message": {
       "name": "keyword.operator.new.command-message.nas",
-      "begin": "\\b(msg|motd|cpemsg|localmsg|menumsg|reply|replysilent)\\b",
+      "begin": "\\b(msg|motd|cpemsg|localmsg|menumsg)\\b",
       "end": "$",
       "beginCaptures": {
         "0": {
@@ -313,6 +316,55 @@
       "patterns": [
         {
           "include": "#message-string"
+        }
+      ]
+    },
+    "command-reply": {
+      "name": "meta.command-reply.nas",
+      "begin": "\\b(reply|replysilent)\\b",
+      "end": "$",
+      "beginCaptures": {
+        "0": {
+          "name": "keyword.operator.new.command-reply.nas"
+        }
+      },
+      "patterns": [
+        {
+          "name": "keyword.control.clear.nas",
+          "match": "\\s+clear\\b"
+        },
+        {
+          "include": "#reply-args"
+        }
+      ]
+    },
+    "reply-args": {
+      "name": "meta.reply-args.nas",
+      "begin": "\\s+",
+      "end": "$",
+      "patterns": [
+        {
+          "include": "#function-label"
+        },
+        {
+          "include": "#variable-value"
+        },
+        {
+          "include": "#numeric-literal"
+        },
+        {
+          "include": "#color-code"
+        },
+        {
+          "include": "#string-builtin-variable"
+        },
+        {
+          "name": "punctuation.separator.reply.nas",
+          "match": "\\|"
+        },
+        {
+          "name": "string.unquoted.reply.nas",
+          "match": "[^|{}@%&#0-9]+"
         }
       ]
     },
