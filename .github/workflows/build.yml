@@ -21,7 +21,7 @@ jobs:
     # `build` job already validated nix against this commit minutes earlier,
     # and the nix output isn't attached to the GitHub release.
     if: ${{ github.event_name != 'workflow_dispatch' }}
-    uses: SpiralP/github-reusable-workflows/.github/workflows/build.yml@c8798b56fd5163af162f70bfc0476df59a6b0eaa # main
+    uses: SpiralP/github-reusable-workflows/.github/workflows/build.yml@6603c1f776ffa282779e823228e44583556c1fdd # main
 
   package:
     name: Package VSIX
