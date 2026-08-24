@@ -69,12 +69,12 @@
     "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
-    "@types/node": "24.13.3",
-    "@types/vscode": "1.125.0",
-    "@typescript-eslint/eslint-plugin": "8.65.0",
-    "@typescript-eslint/parser": "8.65.0",
+    "@types/node": "26.2.0",
+    "@types/vscode": "1.134.0",
+    "@typescript-eslint/eslint-plugin": "8.67.0",
+    "@typescript-eslint/parser": "8.67.0",
     "@vscode/vsce": "3.9.2",
     "eslint": "10.8.1",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   }
 }
