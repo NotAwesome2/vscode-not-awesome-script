@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   publish-vs-marketplace:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     environment:
       name: publish-vs-marketplace
       url: https://marketplace.visualstudio.com/items?itemName=SpiralP.classicube-script
@@ -26,7 +26,7 @@ jobs:
           registryUrl: https://marketplace.visualstudio.com
 
   publish-openvsx:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     environment:
       name: publish-openvsx
       url: https://open-vsx.org/extension/SpiralP/classicube-script
